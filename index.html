@@ -2,6 +2,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>葱妹 & 蒜姐</title>
         <link type="text/css" rel="stylesheet" href="./index_files/default.css">
         <script type="text/javascript" src="./index_files/jquery.min.js"></script>
@@ -127,6 +128,77 @@
             #main {
                 display: none; /* 初始隐藏主内容 */
             }
+
+            /* 桌面端样式 */
+            @media screen and (min-width: 768px) {
+                #text {
+                    position: absolute;
+                    left: 50px;
+                    top: 50px;
+                    width: 500px;
+                    margin: 0;
+                }
+
+                #code .say {
+                    padding: 0 20px;
+                }
+
+                #clock-box {
+                    position: absolute;
+                    left: 50%;
+                    bottom: 50px;
+                    transform: translateX(-50%);
+                    margin: 0;
+                }
+            }
+
+            /* 移动端样式 */
+            @media screen and (max-width: 767px) {
+                body {
+                    font-size: 14px;
+                }
+
+                #main {
+                    padding: 10px;
+                }
+
+                #text {
+                    margin-top: 60px;
+                    margin-bottom: 100px;
+                }
+
+                #code {
+                    font-size: 14px;
+                }
+
+                #clock-box {
+                    font-size: 14px;
+                    position: fixed;
+                    bottom: 20px;
+                    left: 0;
+                    right: 0;
+                    background: rgba(255, 255, 255, 0.9);
+                }
+
+                #canvas {
+                    height: 100vh;
+                }
+            }
+
+            /* 小屏幕手机样式 */
+            @media screen and (max-width: 320px) {
+                #text {
+                    padding: 15px;
+                }
+
+                #code {
+                    font-size: 13px;
+                }
+
+                .login-container {
+                    padding: 20px;
+                }
+            }
         </style>
     </head>
 <body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
@@ -223,14 +295,25 @@
     </div>
     
     <script>
+    function resizeCanvas() {
+        var canvas = document.getElementById('canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    // 监听窗口大小变化
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('load', resizeCanvas);
+
+    // 密码验证
     function checkPassword() {
         var password = document.getElementById('password').value;
-        var correctPassword = "20081213"; 
+        var correctPassword = "20081213"; // 设置你的密码
         
         if (password === correctPassword) {
             document.getElementById('login-box').style.display = 'none';
             document.getElementById('main').style.display = 'block';
-            startAnimation(); 
+            startAnimation();
         } else {
             document.getElementById('error-msg').style.display = 'block';
             document.getElementById('password').value = '';
