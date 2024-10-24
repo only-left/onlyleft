@@ -1,98 +1,79 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>葱妹 & 蒜姐</title>
-    <link type="text/css" rel="stylesheet" href="./index_files/default.css">
-    <script type="text/javascript" src="./index_files/jquery.min.js"></script>
-    <script type="text/javascript" src="./index_files/jscex.min.js"></script>
-    <script type="text/javascript" src="./index_files/jscex-parser.js"></script>
-    <script type="text/javascript" src="./index_files/jscex-jit.js"></script>
-    <script type="text/javascript" src="./index_files/jscex-builderbase.min.js"></script>
-    <script type="text/javascript" src="./index_files/jscex-async.min.js"></script>
-    <script type="text/javascript" src="./index_files/jscex-async-powerpack.min.js"></script>
-    <script type="text/javascript" src="./index_files/functions.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./index_files/love.js" charset="utf-8"></script>
-    <style type="text/css">
-        body {
-            margin: 0;
-            padding: 0;
-            background: #ffe;
-            font-family: "Microsoft YaHei", sans-serif;
-            overflow-x: hidden;
-        }
-        #main {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        #wrap {
-            position: relative;
-            margin: 0 auto;
-            min-width: 1000px;
-            min-height: 680px;
-        }
-        #text {
-            width: 550px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: left;
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        #code {
-            display: block;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #333;
-        }
-        #code .say {
-            display: block;
-            margin: 12px 0;
-            padding: 0 20px;
-        }
-        #code .say-color {
-            color: #000000;
-        }
-        #clock-box {
-            position: absolute;
-            left: 50%;
-            top: 580px;
-            transform: translateX(-50%);
-            text-align: center;
-            color: #333;
-        }
-        #clock-box a {
-            text-decoration: none;
-        }
-        #clock {
-            margin-top: 10px;
-            font-size: 16px;
-        }
-        #error {
-            margin-top: 100px;
-            text-align: center;
-            display: none;
-        }
-        .space {
-            margin-right: 150px;
-        }
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-        .STYLE1 {
-            color: #666666;
-        }
-    </style>
-</head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>葱妹 & 蒜姐</title>
+        <link type="text/css" rel="stylesheet" href="./index_files/default.css">
+        <script type="text/javascript" src="./index_files/jquery.min.js"></script>
+        <script type="text/javascript" src="./index_files/jscex.min.js"></script>
+        <script type="text/javascript" src="./index_files/jscex-parser.js"></script>
+        <script type="text/javascript" src="./index_files/jscex-jit.js"></script>
+        <script type="text/javascript" src="./index_files/jscex-builderbase.min.js"></script>
+        <script type="text/javascript" src="./index_files/jscex-async.min.js"></script>
+        <script type="text/javascript" src="./index_files/jscex-async-powerpack.min.js"></script>
+        <script type="text/javascript" src="./index_files/functions.js" charset="utf-8"></script>
+        <script type="text/javascript" src="./index_files/love.js" charset="utf-8"></script>
+        <style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+                background: #ffe;
+                font-family: "Microsoft YaHei", sans-serif;
+                overflow-x: hidden;
+            }
+            #main {
+                width: 100%;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+            #wrap {
+                position: relative;
+                margin: 0 auto;
+                min-width: 1000px;
+                min-height: 680px;
+            }
+            #text {
+                width: 500px;
+                position: absolute;
+                left: 30px;
+                top: 30px;
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                display: none; /* 初始隐藏文本框 */
+                z-index: 10; /* 确保文本框在上层 */
+            }
+            #code {
+                display: block;
+                font-size: 16px;
+                line-height: 1.8;
+                color: #333;
+            }
+            #code .say {
+                display: block;
+                margin: 12px 0;
+            }
+            #clock-box {
+                position: absolute;
+                left: 50%;
+                bottom: 50px;
+                transform: translateX(-50%);
+                text-align: center;
+                color: #333;
+                z-index: 10; /* 确保时钟在上层 */
+            }
+            #canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1; /* 确保画布在底层 */
+            }
+            .hand {
+                cursor: pointer;
+            }
+        </style>
+    </head>
 <body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
     <audio autoplay="autopaly">
         <source src="http://qzone.haoduoge.com/music/ABA73C55IF93D08D1354D85C2944117B7C0D2.mp3" type="audio/mp3" />
@@ -173,7 +154,7 @@
                 <span class="STYLE1">已经....</span>
                 <div id="clock"></div>
             </div>
-            <canvas id="canvas" width="1100" height="680"></canvas>
+            <canvas id="canvas" width="2000" height="1000"></canvas>
         </div>
     </div>
     
@@ -255,6 +236,7 @@
             while (hold) {
                 $await(Jscex.Async.sleep(10));
             }
+            $("#text").fadeIn(3000);
             while (seed.canScale()) {
                 seed.scale(0.95);
                 $await(Jscex.Async.sleep(10));
@@ -307,11 +289,14 @@
         }));
 
         var textAnimate = eval(Jscex.compile("async", function () {
-		    var strs = "2013-06-10 03:00:00";
-				var nowTime=new Date();
-				var together = new Date(strs.replace(/-/g,"/"));
+            var together = new Date();
+            together.setFullYear(2008, 12, 13); // 设置你们在一起的时间
+            together.setHours(3);
+            together.setMinutes(0);
+            together.setSeconds(0);
+            together.setMilliseconds(0);
 
-		    $("#code").show().typewriter();
+            $("#code").typewriter(); // 打字机效果
             $("#clock-box").fadeIn(500);
             while (true) {
                 timeElapse(together);
