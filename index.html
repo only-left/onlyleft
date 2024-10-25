@@ -1,114 +1,90 @@
-﻿下面的代码，由于文本<span> </span>太长了，导致layout上和clock-box重叠了很多。能不能改成，一个带滚动条的对话框，让文本在对话框里滚动，这样无论文字内容多长，都不会出现重叠？
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>葱妹 & 蒜姐</title>
-        <link type="text/css" rel="stylesheet" href="./index_files/default.css">
-		<script type="text/javascript" src="./index_files/jquery.min.js"></script>
-		<script type="text/javascript" src="./index_files/jscex.min.js"></script>
-		<script type="text/javascript" src="./index_files/jscex-parser.js"></script>
-		<script type="text/javascript" src="./index_files/jscex-jit.js"></script>
-		<script type="text/javascript" src="./index_files/jscex-builderbase.min.js"></script>
-		<script type="text/javascript" src="./index_files/jscex-async.min.js"></script>
-		<script type="text/javascript" src="./index_files/jscex-async-powerpack.min.js"></script>
-		<script type="text/javascript" src="./index_files/functions.js" charset="utf-8"></script>
-		<script type="text/javascript" src="./index_files/love.js" charset="utf-8"></script>
-	    <style type="text/css">
-        <!--
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>葱妹 & 蒜姐</title>
+    <link type="text/css" rel="stylesheet" href="./index_files/default.css">
+    <script type="text/javascript" src="./index_files/jquery.min.js"></script>
+    <script type="text/javascript" src="./index_files/jscex.min.js"></script>
+    <script type="text/javascript" src="./index_files/jscex-parser.js"></script>
+    <script type="text/javascript" src="./index_files/jscex-jit.js"></script>
+    <script type="text/javascript" src="./index_files/jscex-builderbase.min.js"></script>
+    <script type="text/javascript" src="./index_files/jscex-async.min.js"></script>
+    <script type="text/javascript" src="./index_files/jscex-async-powerpack.min.js"></script>
+    <script type="text/javascript" src="./index_files/functions.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./index_files/love.js" charset="utf-8"></script>
+    <style type="text/css">
         .STYLE1 {color: #666666}
-        -->
-        </style>
+        #code {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
-    <body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
-			<audio autoplay="autopaly">
-                <source src="./music/background.mp3" type="audio/mp3">
-			</audio>
-        <div id="main">
-            <div id="error"><br><br><br><br><br><br><br><br><br><br><br>你的浏览器看不了哦，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。<br><br><br><br><br></span></span></span></span></span></span></span></span></span></span></span></div>
-             <div id="wrap">
-                <div id="text">
-			        <div id="code">
-			      <font color="#000000">  	
-                    <span class="say say-color">傻瓜。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">我爱你，我知道你肯定会很无奈的说我知道你爱我呢。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">我想你，就像坐华师地铁线时总想遇见那个你相像的女孩。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">想你的时候，就会特别嫉妒汉子。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">嫉妒她和你一起上课吃饭逛街，我总是极度抱怨的说为什么不是我。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">陪你跑步，陪你自习，和你睡上下铺的人为什么不是我呢。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">也就这时候我才发现我是有多小心眼。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">还记得我们说好的两居室吗。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">一卧室一书房，我们可以在客厅跳舞弹琴。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">房子不要很大，只要里面有我和你。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">对了，你还说要放加湿器，你怕我流鼻血。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">还记得有一天我对你说了很多遍想你吗。想你，只剩下这句话的时候。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">你不知道我的生活会有多空虚，</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">只因其他填充不了它的空缺。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">还记得我说过不要和五六个人做的伴娘吗。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">因为我不是唯一的伴娘，我会生气的。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">还有，我怕我舍不得你出嫁，抢婚了怎么办。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">嘿嘿，有木有好傻。但我就是这么想的。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">我想看到你幸福，但我不想看着你跟别人走。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">小傻瓜，我想你。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">累了，难过了不许哭鼻子。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">你想去月球想去火星我都会陪着你。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">只要你快乐。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">小傻瓜，我爱你。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">我总会习惯逛商场就会想要给你买衣服买巧克力买很多你爱吃的零食。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">一盒巧克力你却能吃上一个学期。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">可听到你说因减肥不吃晚饭的时候你不知道我有多担心你。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">傻瓜，你多胖多"丑"我都会爱你。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">只要你健康。</span>
-                    <span class="say"> </span>
-                    <span class="say say-color">争吵也好，离别也好，我都爱你。</span>
-                    <span class="say"><span class="space"></span></span>
-			  </font></p>
-      </div>
-                </div>
-                <div id="clock-box">
-                   葱妹和<span class="STYLE1"></span><font color="#33CC00">蒜姐</font>在一起
-<span class="STYLE1">已经....</span>
-                  <div id="clock"></div>
-              </div>
-                <canvas id="canvas" width="1100" height="680"></canvas>
-            </div>
-            
+<body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
+    <audio autoplay="autoplay">
+        <source src="./music/background.mp3" type="audio/mp3">
+    </audio>
+    <div id="main">
+        <div id="error">
+            <br><br><br><br><br><br><br><br><br><br><br>
+            你的浏览器看不了哦，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。
+            <br><br><br><br><br>
         </div>
-    
-    <script>
-    </script>
+        <div id="wrap">
+            <div id="text">
+                <div id="code">
+                    <font color="#000000">
+                        <span class="say say-color">傻瓜。</span>
+                        <span class="say say-color">我爱你，我知道你肯定会很无奈的说我知道你爱我呢。</span>
+                        <span class="say say-color">我想你，就像坐华师地铁线时总想遇见那个你相像的女孩。</span>
+                        <span class="say say-color">想你的时候，就会特别嫉妒汉子。</span>
+                        <span class="say say-color">嫉妒她和你一起上课吃饭逛街，我总是极度抱怨的说为什么不是我。</span>
+                        <span class="say say-color">陪你跑步，陪你自习，和你睡上下铺的人为什么不是我呢。</span>
+                        <span class="say say-color">也就这时候我才发现我是有多小心眼。</span>
+                        <span class="say say-color">还记得我们说好的两居室吗。</span>
+                        <span class="say say-color">一卧室一书房，我们可以在客厅跳舞弹琴。</span>
+                        <span class="say say-color">房子不要很大，只要里面有我和你。</span>
+                        <span class="say say-color">对了，你还说要放加湿器，你怕我流鼻血。</span>
+                        <span class="say say-color">还记得有一天我对你说了很多遍想你吗。想你，只剩下这句话的时候。</span>
+                        <span class="say say-color">你不知道我的生活会有多空虚，</span>
+                        <span class="say say-color">只因其他填充不了它的空缺。</span>
+                        <span class="say say-color">还记得我说过不要和五六个人做的伴娘吗。</span>
+                        <span class="say say-color">因为我不是唯一的伴娘，我会生气的。</span>
+                        <span class="say say-color">还有，我怕我舍不得你出嫁，抢婚了怎么办。</span>
+                        <span class="say say-color">嘿嘿，有木有好傻。但我就是这么想的。</span>
+                        <span class="say say-color">我想看到你幸福，但我不想看着你跟别人走。</span>
+                        <span class="say say-color">小傻瓜，我想你。</span>
+                        <span class="say say-color">累了，难过了不许哭鼻子。</span>
+                        <span class="say say-color">你想去月球想去火星我都会陪着你。</span>
+                        <span class="say say-color">只要你快乐。</span>
+                        <span class="say say-color">小傻瓜，我爱你。</span>
+                        <span class="say say-color">我总会习惯逛商场就会想要给你买衣服买干豆片买很多你爱吃的零食。</span>
+                        <span class="say say-color">一盒干豆片你却能吃上一个学期。</span>
+                        <span class="say say-color">可听到你说因减肥不吃晚饭的时候你不知道我有多担心你。</span>
+                        <span class="say say-color">傻瓜，你多肥多"丑"我都会爱你。</span>
+                        <span class="say say-color">只要你健康。</span>
+                        <span class="say say-color">争吵也好，离别也好，我都爱你。</span>
+                    </font>
+                </div>
+            </div>
+            <div id="clock-box">
+                葱妹和<span class="STYLE1"></span><font color="#33CC00">蒜姐</font>在一起
+                <span class="STYLE1">已经....</span>
+                <div id="clock"></div>
+            </div>
+            <canvas id="canvas" width="1100" height="680"></canvas>
+        </div>
+    </div>
 
     <script>
     (function(){
         var canvas = $('#canvas');
-		
+        
         if (!canvas[0].getContext) {
             $("#error").show();
             return false;
@@ -196,14 +172,14 @@
 
         var growAnimate = eval(Jscex.compile("async", function () {
             do {
-    	        tree.grow();
+                tree.grow();
                 $await(Jscex.Async.sleep(10));
             } while (tree.canGrow());
         }));
 
         var flowAnimate = eval(Jscex.compile("async", function () {
             do {
-    	        tree.flower(2);
+                tree.flower(2);
                 $await(Jscex.Async.sleep(10));
             } while (tree.canFlower());
         }));
@@ -217,7 +193,7 @@
             foot.draw();
             tree.snapshot("p2", 500, 0, 610, 680);
 
-            // 会有闪烁不得意这样做, (＞﹏＜)
+            // 会有闪烁不得意这样做, (‾＿＾)
             canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
             canvas.css("background", "#ffe");
             $await(Jscex.Async.sleep(300));
@@ -235,11 +211,11 @@
         }));
 
         var textAnimate = eval(Jscex.compile("async", function () {
-		    var strs = "2008-12-13 00:00:00";
-				var nowTime=new Date();
-				var together = new Date(strs.replace(/-/g,"/"));
+            var strs = "2008-12-13 00:00:00";
+            var nowTime = new Date();
+            var together = new Date(strs.replace(/-/g, "/"));
 
-		    $("#code").show().typewriter();
+            $("#code").show().typewriter();
             $("#clock-box").fadeIn(500);
             while (true) {
                 timeElapse(together);
@@ -260,4 +236,6 @@
 
         runAsync().start();
     })();
-    </script></body></html>
+    </script>
+</body>
+</html>
