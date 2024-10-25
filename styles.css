@@ -1,0 +1,180 @@
+/* 主容器样式 */
+#main {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: none; /* 初始隐藏主内容 */
+}
+
+#wrap {
+    position: relative;
+    margin: 0 auto;
+    min-width: 1000px;
+    min-height: 680px;
+}
+
+/* 文本区域样式 */
+#text {
+    width: 500px;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: none; /* 初始隐藏文本框 */
+    z-index: 10;
+}
+
+#code {
+    display: block;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+#code .say {
+    display: block;
+    margin: 12px 0;
+}
+
+/* 时钟区域样式 */
+#clock-box {
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #333;
+    z-index: 10;
+}
+
+/* 画布样式 */
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hand {
+    cursor: pointer;
+}
+
+/* 登录框样式 */
+#login-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.login-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-container input {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-container button {
+    background: #FF69B4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.login-container button:hover {
+    background: #FF1493;
+}
+
+.login-container .error-msg {
+    color: red;
+    margin-top: 10px;
+    display: none;
+}
+
+/* 音乐控制样式 */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 响应式布局 */
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+
+    #main {
+        padding: 10px;
+    }
+
+    #text {
+        margin-top: 60px;
+        margin-bottom: 100px;
+    }
+
+    #code {
+        font-size: 14px;
+    }
+
+    #clock-box {
+        font-size: 14px;
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    #canvas {
+        height: 100vh;
+    }
+}
+
+/* 超小屏幕适配 */
+@media screen and (max-width: 320px) {
+    #text {
+        padding: 15px;
+    }
+
+    #code {
+        font-size: 13px;
+    }
+
+    .login-container {
+        padding: 20px;
+    }
+}
