@@ -429,7 +429,7 @@
                     }
                     foot.draw();
                     tree.snapshot("p2", 500, 0, 610, 680);
-                    canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
+                    canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")", { willReadFrequently: true });
                     canvas.css("background", "#ffe");
                     $await(Jscex.Async.sleep(300));
                     canvas.css("background", "none");
@@ -451,7 +451,6 @@
                     $await(flowAnimate());
                     $await(moveAnimate());
                     textAnimate().start();
-                    $await(jumpAnimate());
                 }));
 
                 runAsync().start();
