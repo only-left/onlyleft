@@ -16,11 +16,22 @@
     <style type="text/css">
         .STYLE1 {color: #666666}
         #code {
-            max-height: 500px;
+            max-height: 200px;
             overflow-y: auto;
-            border: 1px solid #ccc;
+            border: none;
             padding: 10px;
             margin-bottom: 10px;
+            background-color: #FFFFEF;
+            line-height: 1.5;
+        }
+        #code::-webkit-scrollbar {
+            width: 8px;
+        }
+        #code::-webkit-scrollbar-thumb {
+            background-color: #FFFFEF;
+            border-radius: 4px;
+        }
+        #code::-webkit-scrollbar-track {
             background-color: #FFFFEF;
         }
     </style>
@@ -39,66 +50,36 @@
             <div id="text">
                 <div id="code">
                     <font color="#000000">
-                        <span class="say say-color">傻瓜。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">我爱你，我知道你肯定会很无奈的说我知道你爱我呢。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">我想你，就像坐华师地铁线时总想遇见那个你相像的女孩。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">想你的时候，就会特别嫉妒汉子。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">嫉妒她和你一起上课吃饭逛街，我总是极度抱怨的说为什么不是我。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">陪你跑步，陪你自习，和你睡上下铺的人为什么不是我呢。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">也就这时候我才发现我是有多小心眼。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">还记得我们说好的两居室吗。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">一卧室一书房，我们可以在客厅跳舞弹琴。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">房子不要很大，只要里面有我和你。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">对了，你还说要放加湿器，你怕我流鼻血。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">还记得有一天我对你说了很多遍想你吗。想你，只剩下这句话的时候。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">你不知道我的生活会有多空虚，</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">只因其他填充不了它的空缺。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">还记得我说过不要和五六个人做的伴娘吗。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">因为我不是唯一的伴娘，我会生气的。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">还有，我怕我舍不得你出嫁，抢婚了怎么办。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">嘿嘿，有木有好傻。但我就是这么想的。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">我想看到你幸福，但我不想看着你跟别人走。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">小傻瓜，我想你。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">累了，难过了不许哭鼻子。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">你想去月球想去火星我都会陪着你。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">只要你快乐。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">小傻瓜，我爱你。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">我总会习惯逛商场就会想要给你买衣服买巧克力买很多你爱吃的零食。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">一盒巧克力你却能吃上一个学期。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">可听到你说因减肥不吃晚饭的时候你不知道我有多担心你。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">傻瓜，你多胖多"丑"我都会爱你。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">只要你健康。</span>
-                        <span class="say"> </span>
-                        <span class="say say-color">争吵也好，离别也好，我都爱你。</span>
-                        <span class="say"><span class="space"></span></span>
+                        <span class="say say-color">傻瓜。</span><br>
+                        <span class="say say-color">我爱你，我知道你肯定会很无奈的说我知道你爱我呢。</span><br>
+                        <span class="say say-color">我想你，就像坐华师地铁线时总想遇见那个你相像的女孩。</span><br>
+                        <span class="say say-color">想你的时候，就会特别嫉妒汉子。</span><br>
+                        <span class="say say-color">嫉妒她和你一起上课吃饭逛街，我总是极度抱怨的说为什么不是我。</span><br>
+                        <span class="say say-color">陪你跑步，陪你自习，和你睡上下铺的人为什么不是我呢。</span><br>
+                        <span class="say say-color">也就这时候我才发现我是有多小心眼。</span><br>
+                        <span class="say say-color">还记得我们说好的两居室吗。</span><br>
+                        <span class="say say-color">一卧室一书房，我们可以在客厅跳舞弹琴。</span><br>
+                        <span class="say say-color">房子不要很大，只要里面有我和你。</span><br>
+                        <span class="say say-color">对了，你还说要放加湿器，你怕我流鼻血。</span><br>
+                        <span class="say say-color">还记得有一天我对你说了很多遍想你吗。想你，只剩下这句话的时候。</span><br>
+                        <span class="say say-color">你不知道我的生活会有多空虚，</span><br>
+                        <span class="say say-color">只因其他填充不了它的空缺。</span><br>
+                        <span class="say say-color">还记得我说过不要和五六个人做的伴娘吗。</span><br>
+                        <span class="say say-color">因为我不是唯一的伴娘，我会生气的。</span><br>
+                        <span class="say say-color">还有，我怕我舍不得你出嫁，抢婚了怎么办。</span><br>
+                        <span class="say say-color">嘿嘿，有木有好傻。但我就是这么想的。</span><br>
+                        <span class="say say-color">我想看到你幸福，但我不想看着你跟别人走。</span><br>
+                        <span class="say say-color">小傻瓜，我想你。</span><br>
+                        <span class="say say-color">累了，难过了不许哭鼻子。</span><br>
+                        <span class="say say-color">你想去月球想去火星我都会陪着你。</span><br>
+                        <span class="say say-color">只要你快乐。</span><br>
+                        <span class="say say-color">小傻瓜，我爱你。</span><br>
+                        <span class="say say-color">我总会习惯逛商场就会想要给你买衣服买干豆片买很多你爱吃的零食。</span><br>
+                        <span class="say say-color">一盒干豆片你却能吃上一个学期。</span><br>
+                        <span class="say say-color">可听到你说因减肥不吃晚饭的时候你不知道我有多担心你。</span><br>
+                        <span class="say say-color">傻瓜，你多肥多"丑"我都会爱你。</span><br>
+                        <span class="say say-color">只要你健康。</span><br>
+                        <span class="say say-color">争吵也好，离别也好，我都爱你。</span><br>
                     </font>
                 </div>
             </div>
