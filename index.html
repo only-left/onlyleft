@@ -1,26 +1,20 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>葱妹 & 蒜姐</title>
-    
-    <!-- 样式表 -->
-    <link type="text/css" rel="stylesheet" href="./index_files/default.css">
-    
-    <!-- 外部脚本 -->
-    <script type="text/javascript" src="./index_files/jquery.min.js"></script>
-    <script type="text/javascript" src="./index_files/jscex.min.js"></script>
-    <script type="text/javascript" src="./index_files/jscex-parser.js"></script>
-    <script type="text/javascript" src="./index_files/jscex-jit.js"></script>
-    <script type="text/javascript" src="./index_files/jscex-builderbase.min.js"></script>
-    <script type="text/javascript" src="./index_files/jscex-async.min.js"></script>
-    <script type="text/javascript" src="./index_files/jscex-async-powerpack.min.js"></script>
-    <script type="text/javascript" src="./index_files/functions.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./index_files/love.js" charset="utf-8"></script>
-    
-    <!-- 内联样式 -->
-    <style type="text/css">
+    <link rel="stylesheet" href="./index_files/default.css">
+    <script src="./index_files/jquery.min.js"></script>
+    <script src="./index_files/jscex.min.js"></script>
+    <script src="./index_files/jscex-parser.js"></script>
+    <script src="./index_files/jscex-jit.js"></script>
+    <script src="./index_files/jscex-builderbase.min.js"></script>
+    <script src="./index_files/jscex-async.min.js"></script>
+    <script src="./index_files/jscex-async-powerpack.min.js"></script>
+    <script src="./index_files/functions.js" charset="utf-8"></script>
+    <script src="./index_files/love.js" charset="utf-8"></script>
+    <style>
         body {
             margin: 0;
             padding: 0;
@@ -28,18 +22,21 @@
             font-family: "Microsoft YaHei", sans-serif;
             overflow-x: hidden;
         }
+        
         #main {
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            display: none; /* 初始隐藏主内容 */
+            display: none;
         }
+        
         #wrap {
             position: relative;
             margin: 0 auto;
             min-width: 1000px;
             min-height: 680px;
         }
+        
         #text {
             width: 500px;
             position: absolute;
@@ -48,20 +45,22 @@
             padding: 20px;
             background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            display: none; /* 初始隐藏文本框 */
-            z-index: 10; /* 确保文本框在上层 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 10;
         }
+        
         #code {
-            display: block;
             font-size: 16px;
             line-height: 1.8;
             color: #333;
         }
+        
         #code .say {
             display: block;
             margin: 12px 0;
         }
+        
         #clock-box {
             position: absolute;
             left: 50%;
@@ -69,17 +68,20 @@
             transform: translateX(-50%);
             text-align: center;
             color: #333;
-            z-index: 10; /* 确保时钟在上层 */
+            z-index: 10;
         }
+        
         #canvas {
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 1; /* 确保画布在底层 */
+            z-index: 1;
         }
+        
         .hand {
             cursor: pointer;
         }
+        
         #login-box {
             position: fixed;
             top: 0;
@@ -92,13 +94,15 @@
             align-items: center;
             z-index: 1000;
         }
+        
         .login-container {
             background: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+        
         .login-container input {
             display: block;
             width: 200px;
@@ -108,6 +112,7 @@
             border-radius: 5px;
             font-size: 16px;
         }
+        
         .login-container button {
             background: #FF69B4;
             color: white;
@@ -118,34 +123,29 @@
             font-size: 16px;
             transition: background 0.3s;
         }
+        
         .login-container button:hover {
             background: #FF1493;
         }
+        
         .login-container .error-msg {
             color: red;
             margin-top: 10px;
             display: none;
         }
-
+        
         /* 桌面端样式 */
         @media screen and (min-width: 768px) {
             #text {
                 left: 50px;
                 top: 50px;
                 width: 500px;
-                margin: 0;
-            }
-            #code .say {
-                padding: 0 20px;
             }
             #clock-box {
-                left: 50%;
                 bottom: 50px;
-                transform: translateX(-50%);
-                margin: 0;
             }
         }
-
+        
         /* 移动端样式 */
         @media screen and (max-width: 767px) {
             body {
@@ -173,26 +173,9 @@
                 height: 100vh;
             }
         }
-
-        @media screen and (max-width: 320px) {
-            #text {
-                padding: 15px;
-            }
-            #code {
-                font-size: 13px;
-            }
-            .login-container {
-                padding: 20px;
-            }
-        }
     </style>
 </head>
-<body 
-    ondragstart="window.event.returnValue=false" 
-    oncontextmenu="window.event.returnValue=false" 
-    onselectstart="event.returnValue=false">
-    
-    <!-- 登录框 -->
+<body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
     <div id="login-box">
         <div class="login-container">
             <h2>请输入密码</h2>
@@ -202,24 +185,14 @@
         </div>
     </div>
 
-    <!-- 音乐播放器 -->
-    <audio id="bgMusic" loop autoplay>
+    <audio id="bgMusic" loop>
         <source src="./music/background.mp3" type="audio/mp3">
-        <!-- 备用音源 -->
         <source src="https://raw.githubusercontent.com/only-left/onlyleft/main/music/background.mp3" type="audio/mp3">
     </audio>
 
-    <!-- 音乐控制按钮 -->
-    <div class="music-control" onclick="toggleMusic()" title="播放/暂停背景音乐">
-        <!-- 这里可以添加图标或按钮内容 -->
-    </div>
-
-    <!-- 主内容 -->
     <div id="main">
-        <div id="error" style="display: none;">
-            <br><br><br><br><br><br><br><br><br><br><br>
-            你的浏览器看不了哦，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。
-            <br><br><br><br><br>
+        <div id="error">
+            <p>你的浏览器看不了哦，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</p>
         </div>
         <div id="wrap">
             <div id="text">
@@ -287,62 +260,55 @@
                 </div>
             </div>
             <div id="clock-box">
-                葱妹和<span class="STYLE1"></span><font color="#33CC00">蒜姐</font>在一起
-                <span class="STYLE1">已经....</span>
+                葱妹和<font color="#33CC00">蒜姐</font>在一起<span class="STYLE1">已经....</span>
                 <div id="clock"></div>
             </div>
             <canvas id="canvas" width="2000" height="1000"></canvas>
         </div>
     </div>
-    
-    <!-- 内联脚本 -->
+
     <script>
-        // 音乐控制
         const audio = document.getElementById('bgMusic');
-        const musicControl = document.querySelector('.music-control');
         let isPlaying = false;
 
-        // 播放/暂停控制
+        document.addEventListener('click', function() {
+            if (!isPlaying) {
+                audio.play().catch(error => console.log("播放失败:", error));
+            }
+        }, { once: true });
+
         function toggleMusic() {
             if (isPlaying) {
                 audio.pause();
-                musicControl.classList.remove('playing');
             } else {
-                audio.play().catch(function(error) {
-                    console.log("播放失败:", error);
-                });
-                musicControl.classList.add('playing');
+                audio.play().catch(error => console.log("播放失败:", error));
             }
             isPlaying = !isPlaying;
         }
 
-        // 监听音频播放状态
-        audio.addEventListener('playing', function() {
-            isPlaying = true;
-            musicControl.classList.add('playing');
+        audio.addEventListener('playing', () => { isPlaying = true; });
+        audio.addEventListener('pause', () => { isPlaying = false; });
+
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                audio.pause();
+            } else if (isPlaying) {
+                audio.play().catch(error => console.log("播放失败:", error));
+            }
         });
 
-        audio.addEventListener('pause', function() {
-            isPlaying = false;
-            musicControl.classList.remove('playing');
-        });
-
-        // 调整画布大小
         function resizeCanvas() {
-            var canvas = document.getElementById('canvas');
+            const canvas = document.getElementById('canvas');
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
 
-        // 监听窗口大小变化
         window.addEventListener('resize', resizeCanvas);
         window.addEventListener('load', resizeCanvas);
 
-        // 密码验证
         function checkPassword() {
-            var password = document.getElementById('password').value;
-            var correctPassword = "20081213"; // 设置你的密码
-            
+            const password = document.getElementById('password').value;
+            const correctPassword = "20081213";
             if (password === correctPassword) {
                 document.getElementById('login-box').style.display = 'none';
                 document.getElementById('main').style.display = 'block';
@@ -359,23 +325,20 @@
             }
         });
 
-        // 启动动画
         function startAnimation() {
             (function(){
-                var canvas = $('#canvas');
-                
+                const canvas = $('#canvas');
                 if (!canvas[0].getContext) {
                     $("#error").show();
                     return false;
                 }
 
-                var width = canvas.width();
-                var height = canvas.height();
-                
+                const width = canvas.width();
+                const height = canvas.height();
                 canvas.attr("width", width);
                 canvas.attr("height", height);
 
-                var opts = {
+                const opts = {
                     seed: {
                         x: width / 2 - 20,
                         color: "rgb(190, 26, 37)",
@@ -388,14 +351,6 @@
                             ]],
                             [550, 445, 600, 356, 680, 345, 12, 100, [
                                 [578, 400, 648, 409, 661, 426, 3, 80]
-                            ]],
-                            [539, 281, 537, 248, 534, 217, 3, 40],
-                            [546, 397, 413, 247, 328, 244, 9, 80, [
-                                [427, 286, 383, 253, 371, 205, 2, 40],
-                                [498, 345, 435, 315, 395, 330, 4, 60]
-                            ]],
-                            [546, 357, 608, 252, 678, 221, 6, 100, [
-                                [590, 293, 646, 277, 648, 271, 2, 80]
                             ]]
                         ]] 
                     ],
@@ -411,15 +366,13 @@
                     }
                 }
 
-                var tree = new Tree(canvas[0], width, height, opts);
-                var seed = tree.seed;
-                var foot = tree.footer;
-                var hold = 1;
+                const tree = new Tree(canvas[0], width, height, opts);
+                const seed = tree.seed;
+                const foot = tree.footer;
+                let hold = 1;
 
                 canvas.click(function(e) {
-                    var offset = canvas.offset(), x, y;
-                    x = e.pageX - offset.left;
-                    y = e.pageY - offset.top;
+                    const offset = canvas.offset(), x = e.pageX - offset.left, y = e.pageY - offset.top;
                     if (seed.hover(x, y)) {
                         hold = 0; 
                         canvas.unbind("click");
@@ -427,13 +380,11 @@
                         canvas.removeClass('hand');
                     }
                 }).mousemove(function(e){
-                    var offset = canvas.offset(), x, y;
-                    x = e.pageX - offset.left;
-                    y = e.pageY - offset.top;
+                    const offset = canvas.offset(), x = e.pageX - offset.left, y = e.pageY - offset.top;
                     canvas.toggleClass('hand', seed.hover(x, y));
                 });
 
-                var seedAnimate = eval(Jscex.compile("async", function () {
+                const seedAnimate = eval(Jscex.compile("async", function () {
                     seed.draw();
                     while (hold) {
                         $await(Jscex.Async.sleep(10));
@@ -450,21 +401,21 @@
                     }
                 }));
 
-                var growAnimate = eval(Jscex.compile("async", function () {
+                const growAnimate = eval(Jscex.compile("async", function () {
                     do {
                         tree.grow();
                         $await(Jscex.Async.sleep(10));
                     } while (tree.canGrow());
                 }));
 
-                var flowAnimate = eval(Jscex.compile("async", function () {
+                const flowAnimate = eval(Jscex.compile("async", function () {
                     do {
                         tree.flower(2);
                         $await(Jscex.Async.sleep(10));
                     } while (tree.canFlower());
                 }));
 
-                var moveAnimate = eval(Jscex.compile("async", function () {
+                const moveAnimate = eval(Jscex.compile("async", function () {
                     tree.snapshot("p1", 240, 0, 610, 680);
                     while (tree.move("p1", 500, 0)) {
                         foot.draw();
@@ -472,33 +423,15 @@
                     }
                     foot.draw();
                     tree.snapshot("p2", 500, 0, 610, 680);
-
-                    // 会有闪烁不得已这样做, (＞﹏＜)
                     canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
                     canvas.css("background", "#ffe");
                     $await(Jscex.Async.sleep(300));
                     canvas.css("background", "none");
                 }));
 
-                var jumpAnimate = eval(Jscex.compile("async", function () {
-                    var ctx = tree.ctx;
-                    while (true) {
-                        tree.ctx.clearRect(0, 0, width, height);
-                        tree.jump();
-                        foot.draw();
-                        $await(Jscex.Async.sleep(25));
-                    }
-                }));
-
-                var textAnimate = eval(Jscex.compile("async", function () {
-                    var together = new Date();
-                    together.setFullYear(2008, 12, 13); // 设置你们在一起的时间
-                    together.setHours(3);
-                    together.setMinutes(0);
-                    together.setSeconds(0);
-                    together.setMilliseconds(0);
-
-                    $("#code").typewriter(); // 打字机效果
+                const textAnimate = eval(Jscex.compile("async", function () {
+                    const together = new Date(2008, 11, 13, 3, 0, 0, 0);
+                    $("#code").typewriter();
                     $("#clock-box").fadeIn(500);
                     while (true) {
                         timeElapse(together);
@@ -506,19 +439,18 @@
                     }
                 }));
 
-                var runAsync = eval(Jscex.compile("async", function () {
+                const runAsync = eval(Jscex.compile("async", function () {
                     $await(seedAnimate());
                     $await(growAnimate());
                     $await(flowAnimate());
                     $await(moveAnimate());
-
                     textAnimate().start();
-
                     $await(jumpAnimate());
                 }));
 
                 runAsync().start();
             })();
-        </script>
+        }
+    </script>
 </body>
 </html>
