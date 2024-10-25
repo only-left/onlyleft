@@ -124,6 +124,22 @@
                 margin-top: 10px;
                 display: none;
             }
+
+            #music-icon {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                background: url('./music-icon.png') no-repeat center center;
+                background-size: contain;
+                cursor: pointer;
+                z-index: 100;
+            }
+            #music-icon.playing {
+                background: url('./music-pause-icon.png') no-repeat center center;
+                background-size: contain;
+            }
             
             #main {
                 display: none; /* 初始隐藏主内容 */
@@ -214,10 +230,12 @@
         <source src="http://qzone.haoduoge.com/music/ABA73C55IF93D08D1354D85C2944117B7C0D2.mp3" type="audio/mp3" />
     </audio> -->
 
+
     <!-- 音乐播放器 -->
+    <div id="music-icon" onclick="toggleMusic()"></div>
+
     <audio id="bgMusic" loop>
         <source src="./music/background.mp3" type="audio/mp3">
-        <!-- 备用音源 -->
         <source src="https://raw.githubusercontent.com/only-left/onlyleft/main/music/background.mp3" type="audio/mp3">
     </audio>
 
@@ -306,7 +324,7 @@
     
     <script>
         const audio = document.getElementById('bgMusic');
-        const musicControl = document.querySelector('.music-control');
+        const musicControl = document.getElementById('music-icon');
         let isPlaying = false;
 
         // 自动播放可能被浏览器阻止，所以添加点击事件监听
@@ -322,14 +340,13 @@
         function toggleMusic() {
             if (isPlaying) {
                 audio.pause();
-                musicControl.classList.remove('playing');
             } else {
                 audio.play().catch(function(error) {
                     console.log("播放失败:", error);
                 });
-                musicControl.classList.add('playing');
             }
             isPlaying = !isPlaying;
+            musicControl.classList.toggle('playing', isPlaying);
         }
 
         // 监听音频播放状态
