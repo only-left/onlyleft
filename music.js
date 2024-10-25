@@ -44,14 +44,3 @@ audio.addEventListener('pause', function() {
     isPlaying = false;
     musicControl.classList.remove('playing');
 });
-
-// 处理页面可见性变化
-document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-        audio.pause();
-    } else if (isPlaying) {
-        audio.play().catch(function(error) {
-            console.log("播放失败:", error);
-        });
-    }
-});
