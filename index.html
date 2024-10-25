@@ -178,7 +178,7 @@
     </div>
 
     <!-- 音乐播放器 -->
-    <audio autoplay loop>
+    <audio id="bgMusic" loop>
         <source src="./music/background.mp3" type="audio/mp3">
         <source src="https://raw.githubusercontent.com/only-left/onlyleft/main/music/background.mp3" type="audio/mp3">
     </audio>
@@ -209,56 +209,56 @@
     <!-- JavaScript 代码 -->
     <script>
         // 音频控制模块
-        // const AudioController = {
-        //     audio: null,
-        //     isPlaying: false,
+        const AudioController = {
+            audio: null,
+            isPlaying: false,
 
-        //     init() {
-        //         this.audio = document.getElementById('bgMusic');
-        //         this.setupEventListeners();
-        //     },
+            init() {
+                this.audio = document.getElementById('bgMusic');
+                this.setupEventListeners();
+            },
 
-        //     setupEventListeners() {
-        //         document.addEventListener('click', () => {
-        //             if (!this.isPlaying) {
-        //                 this.play();
-        //             }
-        //         }, { once: true });
+            setupEventListeners() {
+                document.addEventListener('click', () => {
+                    if (!this.isPlaying) {
+                        this.play();
+                    }
+                }, { once: true });
 
-        //         this.audio.addEventListener('playing', () => {
-        //             this.isPlaying = true;
-        //         });
+                this.audio.addEventListener('playing', () => {
+                    this.isPlaying = true;
+                });
 
-        //         this.audio.addEventListener('pause', () => {
-        //             this.isPlaying = false;
-        //         });
+                this.audio.addEventListener('pause', () => {
+                    this.isPlaying = false;
+                });
 
-        //         document.addEventListener('visibilitychange', () => {
-        //             if (document.hidden) {
-        //                 this.pause();
-        //             } else if (this.isPlaying) {
-        //                 this.play();
-        //             }
-        //         });
-        //     },
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        this.pause();
+                    } else if (this.isPlaying) {
+                        this.play();
+                    }
+                });
+            },
 
-        //     play() {
-        //         this.audio.play().catch(error => console.log("播放失败:", error));
-        //     },
+            play() {
+                this.audio.play().catch(error => console.log("播放失败:", error));
+            },
 
-        //     pause() {
-        //         this.audio.pause();
-        //     },
+            pause() {
+                this.audio.pause();
+            },
 
-        //     toggle() {
-        //         if (this.isPlaying) {
-        //             this.pause();
-        //         } else {
-        //             this.play();
-        //         }
-        //         this.isPlaying = !this.isPlaying;
-        //     }
-        // };
+            toggle() {
+                if (this.isPlaying) {
+                    this.pause();
+                } else {
+                    this.play();
+                }
+                this.isPlaying = !this.isPlaying;
+            }
+        };
 
         // 画布尺寸控制
         const CanvasController = {
@@ -546,6 +546,7 @@
 
         // 初始化所有控制器
         document.addEventListener('DOMContentLoaded', () => {
+            AudioController.init();
             CanvasController.init();
             LoginController.init();
         });
