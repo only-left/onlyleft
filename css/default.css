@@ -142,15 +142,13 @@ body {
 #copyright a {
     color: #666;
 }
-
+/* 
 @supports (-webkit-touch-callout: none) {
-    /* iOS devices */
     body, #mainDiv {
         -webkit-overflow-scrolling: touch;
     }
 }
 
-/* 移动端适配 */
 @media screen and (max-width: 768px) {
     #mainDiv {
         padding: 10px;
@@ -212,7 +210,6 @@ body {
     }
 }
 
-/* 小屏幕手机适配 */
 @media screen and (max-width: 480px) {
     body {
         font-size: 14px;
@@ -236,7 +233,6 @@ body {
     }
 }
 
-/* 横屏适配 */
 @media screen and (max-width: 768px) and (orientation: landscape) {
     #content {
         flex-direction: row;
@@ -249,4 +245,4 @@ body {
     #code {
         width: 50%;
     }
-}
+} */
