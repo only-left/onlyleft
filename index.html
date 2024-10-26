@@ -3,7 +3,8 @@
     <head>
         <title>葱妹和蒜姐</title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+        <meta name="viewport" content="width=device-width">
         <style type="text/css">
             @font-face {
                 font-family: digit;
@@ -194,6 +195,19 @@
         </div>
     </div>
     <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取屏幕宽度
+            var screenWidth = window.innerWidth;
+            var viewport = document.querySelector('meta[name="viewport"]');
+            
+            // 根据屏幕宽度设置不同的缩放比例
+            if (screenWidth <= 768) {  // 移动设备
+                viewport.content = 'width=device-width, initial-scale=0.85, maximum-scale=0.85, user-scalable=no';
+            } else {  // 桌面设备
+                viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+            }
+        });
+
         var audio = document.getElementById('bgMusic');
         var musicControl = document.getElementById('musicControl');
         var isPlaying = false;
