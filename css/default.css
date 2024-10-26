@@ -3,9 +3,8 @@ body {
     padding: 0;
     background: #ffe;
     font-size: 12px;
-    min-height: 100vh;
     overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    min-height: 100vh;
 }
 
 #mainDiv {
@@ -14,17 +13,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
+    margin-top: -50px; 
 }
 
 #content {
+    position: relative;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    max-width: 1200px;
+    align-items: center;
     margin: 0 auto;
-    gap: 20px;
 }
 
 #loveHeart {
@@ -92,14 +88,12 @@ body {
 
 #code {
     width: 440px;
-    /* height: 570px; */
+    height: 570px;
     color: #333;
     font-family: "Roboto", "Lato", "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
     font-size: 13px;
     line-height: 1.5;
     margin-top: 27.5px;
-    height: auto; /* 改为自动高度 */
-    min-height: 570px;
 }
 
 #code .string {
@@ -142,29 +136,44 @@ body {
 #copyright a {
     color: #666;
 }
-/* 
-@supports (-webkit-touch-callout: none) {
-    body, #mainDiv {
-        -webkit-overflow-scrolling: touch;
-    }
-}
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     #mainDiv {
-        padding: 10px;
-        height: auto;
+        margin-top: 0;
+        min-height: auto;
+        display: block;
     }
 
     #content {
+        display: flex;
         flex-direction: column;
         width: 100%;
+        min-height: 100vh; 
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
     }
 
     #loveHeart {
-        width: 100%;
-        height: auto;
-        max-width: 400px;
+        width: 100vw; 
+        height: 100vw; 
+        max-width: 500px;
+        max-height: 500px;
         margin: 0 auto;
+        position: relative;
+        transform-origin: center top;
+        transform: scale(0.8); 
+    }
+
+    #code {
+        float: none;
+        width: 90%;
+        max-width: 500px;
+        height: auto;
+        margin: 30px auto;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
     }
 
     #garden {
@@ -172,77 +181,43 @@ body {
         height: 100%;
     }
 
-    #code {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        margin: 20px auto;
-        padding: 15px;
-        box-sizing: border-box;
-        font-size: 14px;
-        white-space: pre-wrap;
-        word-break: break-word;
-    }
-
     #words {
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        font-size: 18px;
         text-align: center;
     }
 
     #messages {
-        width: 100%;
         text-align: center;
-    }
-
-    #loveu {
-        margin-right: 0;
-        text-align: center;
-        width: 100%;
+        padding: 10px;
     }
 
     #elapseClock {
+        font-size: 16px;
+    }
+
+    #loveu {
         text-align: center;
+        margin: 15px auto;
+        font-size: 18px;
+        margin-right: 0;  
     }
 }
 
 @media screen and (max-width: 480px) {
-    body {
-        font-size: 14px;
-    }
-
-    #code {
-        font-size: 12px;
-        line-height: 1.4;
+    #loveHeart {
+        transform: scale(0.7);
     }
 
     #words {
-        font-size: 18px;
-    }
-
-    #elapseClock .digit {
-        font-size: 24px;
-    }
-
-    #loveu {
-        font-size: 18px;
-    }
-}
-
-@media screen and (max-width: 768px) and (orientation: landscape) {
-    #content {
-        flex-direction: row;
-    }
-
-    #loveHeart {
-        width: 50%;
+        font-size: 16px;
     }
 
     #code {
-        width: 50%;
+        font-size: 13px;
     }
 } */
