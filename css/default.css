@@ -5,6 +5,7 @@ body {
     font-size: 12px;
     overflow: auto;
     min-height: 100vh;
+    overflow-y: auto; /* 允许垂直滚动 */
 }
 
 #mainDiv {
@@ -14,6 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: -50px; 
+    overflow-y: auto; /* 允许垂直滚动 */
 }
 
 #content {
@@ -21,6 +23,7 @@ body {
     display: flex;
     align-items: center;
     margin: 0 auto;
+    min-height: 100vh; /* 确保至少有一个视口高度 */
 }
 
 #loveHeart {
@@ -88,12 +91,14 @@ body {
 
 #code {
     width: 440px;
-    height: 570px;
+    /* height: 570px; */
     color: #333;
     font-family: "Roboto", "Lato", "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
     font-size: 13px;
     line-height: 1.5;
     margin-top: 27.5px;
+    height: auto; /* 改为自动高度 */
+    min-height: 570px;
 }
 
 #code .string {
@@ -135,6 +140,13 @@ body {
 
 #copyright a {
     color: #666;
+}
+
+@supports (-webkit-touch-callout: none) {
+    /* iOS devices */
+    body, #mainDiv {
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 /* @media screen and (max-width: 768px) {
