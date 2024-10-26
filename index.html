@@ -19,9 +19,21 @@
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
 
-<body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
-    <audio autoplay="autopaly">
-        <source src="./music/background.mp3" type="audio/mp3" />
+<body>
+    <!-- 登录框 -->
+    <div id="login-box">
+        <div class="login-container">
+            <h2>请输入密码</h2>
+            <input type="password" id="password" placeholder="输入密码...">
+            <button onclick="checkPassword()">进入</button>
+            <p class="error-msg" id="error-msg">密码错误，请重试</p>
+        </div>
+    </div>
+
+    <div id="musicControl">暂停音乐</div>
+
+    <audio id="bgMusic" autoplay loop>
+        <source src="./music/background.mp3" type="audio/mp3">
     </audio>
 
     <div id="mainDiv">
@@ -73,7 +85,9 @@
         </div>
     </div>
     <script type="text/javascript">
-        // Heart animation.
+        var audio = document.getElementById('bgMusic');
+        var musicControl = document.getElementById('musicControl');
+        var isPlaying = false;
         var offsetX = $("#loveHeart").width() / 2;
         var offsetY = $("#loveHeart").height() / 2 - 55;
         var together = new Date();
@@ -82,29 +96,86 @@
         together.setMinutes(0);
         together.setSeconds(0);
         together.setMilliseconds(0);
-        
-        if (!document.createElement('canvas').getContext) {
-            var msg = document.createElement("div");
-            msg.id = "errorMsg";
-            msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-            document.body.appendChild(msg);
-            $("#code").css("display", "none")
-            $("#copyright").css("position", "absolute");
-            $("#copyright").css("bottom", "10px");
-            document.execCommand("stop");
-        } else {
-            setTimeout(function () {
-                startHeartAnimation();
-            }, 1000);
 
-            timeElapse(together);
-            setInterval(function () {
-                timeElapse(together);
-            }, 500);
-
-            adjustCodePosition();
-            // 移除这里的 $("#code").typewriter() 调用，因为它现在在startHeartAnimation()中调用
+        // 密码验证函数
+        function checkPassword() {
+            var password = document.getElementById('password').value;
+            if (password === "20081213") {
+                // 隐藏登录框
+                document.getElementById('login-box').style.display = 'none';
+                // 显示音乐控制按钮
+                document.getElementById('musicControl').style.display = 'block';
+                // 开始播放音乐
+                startMusic();
+                // 初始化动画
+                startAnimation();
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
         }
+
+        // 音乐控制函数
+        function startMusic() {
+            audio.play().then(function() {
+                isPlaying = true;
+                updateButtonText();
+            }).catch(function(error) {
+                console.log("播放失败:", error);
+            });
+        }
+
+        function updateButtonText() {
+            musicControl.textContent = isPlaying ? '暂停音乐' : '播放音乐';
+        }
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+            isPlaying = !isPlaying;
+            updateButtonText();
+        }
+
+        // 音乐控制事件监听
+        musicControl.addEventListener('click', togglePlay);
+
+        // 启动动画和计时器
+        function startAnimation() {
+            if (!document.createElement('canvas').getContext) {
+                var msg = document.createElement("div");
+                msg.id = "errorMsg";
+                msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+                document.body.appendChild(msg);
+                $("#code").css("display", "none")
+                $("#copyright").css("position", "absolute");
+                $("#copyright").css("bottom", "10px");
+                document.execCommand("stop");
+            } else {
+                // 启动心形动画
+                startHeartAnimation();
+                
+                // 启动并持续更新时间
+                timeElapse(together);
+                setInterval(function () {
+                    timeElapse(together);
+                }, 500);
+                
+                // 调整代码位置
+                adjustCodePosition();
+                
+                // 显示代码区域
+                $("#code").css("display", "block");
+            }
+        }
+
+        // 监听回车键
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
     </script>
 </body>
 </html>
