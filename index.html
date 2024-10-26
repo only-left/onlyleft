@@ -8,9 +8,127 @@
             font-family: digit;
             src: url('digital-7_mono.ttf') format("truetype");
         }
+        
+        /* 基础样式重置 */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
         /* 添加这个样式来初始隐藏文字 */
         #code {
             display: none;
+        }
+        
+        /* 登录框核心样式 */
+        #login-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FFFFEF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+    
+        .login-container {
+            background: #ffffff;
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 300px;
+            width: 90%;
+        }
+    
+        .login-container h2 {
+            margin: 0 0 25px;
+            color: #d46abf;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #f2a8d4;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+    
+        .login-container input:focus {
+            border-color: #f7c4e9;
+            box-shadow: 0 0 8px rgba(247, 196, 233, 0.5);
+        }
+    
+        .login-container button {
+            background: #f78fb3;
+            color: #ffffff;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            margin-top: 15px;
+        }
+    
+        .login-container button:hover {
+            background: #f06292;
+            transform: translateY(-3px);
+        }
+    
+        .error-msg {
+            color: #ff6b6b;
+            margin: 10px 0 0;
+            display: none;
+            font-size: 15px;
+        }
+    
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 30px;
+            }
+    
+            .login-container h2 {
+                font-size: 24px;
+            }
+    
+            .login-container button {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+        }
+    
+        /* 音乐控制按钮样式 */
+        #musicControl {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid #ddd;
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: none;
+        }
+        
+        #musicControl:hover {
+            background: rgba(255, 255, 255, 0.9);
         }
     </style>
     <link href="css/default.css" type="text/css" rel="stylesheet">
