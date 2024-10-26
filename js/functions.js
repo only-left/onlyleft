@@ -90,7 +90,7 @@ function startHeartAnimation() {
                 if (b >= c.length) {
                     clearInterval(e)
                 }
-            }, 50);  // 从100改为75
+            }, 75);  // 从100改为75
         });
         return this
     }
