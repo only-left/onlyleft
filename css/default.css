@@ -44,6 +44,7 @@ body {
     top: 195px;  /* 不再使用50%，直接用固定位置 */
     left: 70px;  /* 不再使用50%和transform */
     width: 500px;
+    font-size: 24px;
     z-index: 2;
 }
 
@@ -69,7 +70,7 @@ body {
 #loveu {
     padding: 5px;
     font-size: 22px;
-    margin-top: 80px; /* 增加与上方的距离 */
+    margin-top: 20px; /* 增加与上方的距离 */
     text-align: right; /* 改为右对齐 */
     display: none;
     margin-right: 120px; /* 添加右侧边距，增加层次感 */
