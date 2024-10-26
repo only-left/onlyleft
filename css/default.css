@@ -138,27 +138,27 @@ body {
 }
 
 /* 添加响应式布局支持 */
-
 @media screen and (max-width: 768px) {
     #mainDiv {
-        transform: scale(calc(100vw / 1110)); /* 根据视窗宽度动态计算缩放比例 */
-        transform-origin: top center;
-        height: auto;
         margin-top: 0;
+        min-height: auto;
+        padding: 20px 0;
     }
 
     #content {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        /* 移除固定宽度限制 */
-        margin: 0 auto !important;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        width: 100% !important;
     }
 
     #loveHeart {
-        width: 670px;
-        height: 625px;
+        float: none;
+        width: 100%;
+        max-width: 500px; /* 限制最大宽度 */
+        height: auto;
+        aspect-ratio: 1/1; /* 保持正方形比例 */
+        margin: 0 auto 30px; /* 添加底部间距 */
     }
 
     #garden {
@@ -167,14 +167,16 @@ body {
     }
 
     #words {
-        top: 195px;
-        left: 70px;
-        width: 500px;
-        font-size: 24px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        font-size: 18px;
     }
 
     #messages {
-        padding: 15px;
+        text-align: center; /* 在手机上居中显示可能更好 */
+        padding: 10px;
     }
 
     #elapseClock {
@@ -186,50 +188,33 @@ body {
     }
 
     #loveu {
-        margin-top: 80px;
-        margin-right: 120px;
-        font-size: 22px;
+        text-align: center;
+        margin: 15px 0 0 0; /* 移除右边距，改用上下边距 */
+        font-size: 18px;
     }
 
     #code {
-        width: 440px;
-        margin: 27.5px 0 0 0;
-        height: 570px;
-    }
-    
-    #content {
-        width: 100% !important;
-        height: auto !important;
-        margin: 0 !important;
-    }
-}
-
-@media screen and (orientation: landscape) and (max-height: 480px) {
-    #mainDiv {
-        transform: scale(calc(100vh / 625)); /* 根据视窗高度动态计算缩放 */
+        float: none;
+        width: 90%;
+        max-width: 500px;
+        height: auto;
+        margin: 0 auto;
+        padding: 20px;
+        font-size: 14px;
+        line-height: 1.6;
+        background: rgba(255, 255, 255, 0.1); /* 可选：添加轻微背景突出文字 */
+        border-radius: 10px; /* 可选：添加圆角 */
     }
 }
 
+/* 更小屏幕的微调 */
 @media screen and (max-width: 480px) {
-    #mainDiv {
-        transform: scale(0.35); 
-    }
-}
-
-@media screen and (max-width: 320px) {
-    #mainDiv {
-        transform: scale(0.3); 
-    }
-}  
-
-/* 添加更小屏幕的支持 */
-/* @media screen and (max-width: 480px) {
     #loveHeart {
-        height: 350px;
+        max-width: 350px;
     }
 
     #words {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     #elapseClock .digit {
@@ -237,6 +222,6 @@ body {
     }
 
     #code {
-        font-size: 12px;
+        font-size: 13px;
     }
-} */
+}
