@@ -136,8 +136,8 @@ body {
 #copyright a {
     color: #666;
 }
-/* 
-@media screen and (max-width: 768px) {
+
+/* @media screen and (max-width: 768px) {
     #mainDiv {
         margin-top: 0;
         min-height: auto;
@@ -208,7 +208,6 @@ body {
     }
 }
 
-更小屏幕的额外调整 
 @media screen and (max-width: 480px) {
     #loveHeart {
         transform: scale(0.7);
