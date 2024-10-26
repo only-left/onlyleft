@@ -140,28 +140,29 @@
                 height: 625px;
             }
 
-            /* 重要：调整words容器的位置 */
+            /* 调整words的垂直位置 */
             #words {
                 position: absolute;
                 left: 0;
-                top: 0;
-                width: 670px; /* 与loveHeart同宽 */
-                height: 625px; /* 与loveHeart同高 */
+                /* 向上偏移以对齐garden中心 */
+                top: -100px;  /* 可以根据实际情况调整这个值 */
+                width: 670px;
+                height: 625px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                pointer-events: none; /* 允许点击穿透到garden */
+                pointer-events: none;
             }
 
-            /* messages的样式 */
             #messages {
                 display: block;
                 width: 500px;
                 text-align: center;
-                background: rgba(255, 255, 255, 0.8); /* 可选：添加半透明背景 */
                 padding: 10px;
-                pointer-events: auto; /* 恢复点击事件 */
+                pointer-events: auto;
+                /* 可以添加margin-top来微调位置 */
+                margin-top: -50px;  /* 可以根据实际情况调整这个值 */
             }
 
             /* 时钟样式 */
@@ -196,13 +197,17 @@
             #words {
                 position: absolute;
                 left: 0;
-                top: 0;
                 width: 670px;
                 height: 625px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                top: -100px;
+            }
+
+            #messages {
+                margin-top: -50px;
             }
 
             #musicControl {
@@ -221,13 +226,17 @@
             #words {
                 position: absolute;
                 left: 0;
-                top: 0;
+                top: -100px;
                 width: 670px;
                 height: 625px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+            }
+
+            #messages {
+                margin-top: -50px;
             }
         }
 
@@ -240,13 +249,17 @@
             #words {
                 position: absolute;
                 left: 0;
-                top: 0;
+                top: -100px;
                 width: 670px;
                 height: 625px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+            }
+
+            #messages {
+                margin-top: -50px;
             }
         }
 
@@ -260,13 +273,17 @@
             #words {
                 position: absolute;
                 left: 0;
-                top: 0;
+                top: -100px;
                 width: 670px;
                 height: 625px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+            }
+
+            #messages {
+                margin-top: -50px;
             }
         }
     </style>
