@@ -143,23 +143,23 @@ body {
         transform: scale(0.45);
         transform-origin: top center;
         height: auto;
-        padding: 20px 0;
         margin-top: 0;
     }
 
     #content {
-        flex-direction: column;
-        align-items: center;
-        width: 100% !important;
-        height: auto !important;
-        margin: 0 !important;
+        display: flex;
+        flex-direction: row; /* 改回水平排列 */
+        justify-content: center;
+        align-items: flex-start;
+        width: 1110px !important; /* 保持原来的宽度 */
+        margin: 0 auto !important;
     }
 
     #loveHeart {
-        width: 100%;
-        height: 400px;
-        float: none;
-        margin: 0 auto;
+        width: 670px;
+        height: 625px;
+        float: left; /* 保持浮动 */
+        margin: 0;
     }
 
     #garden {
@@ -168,12 +168,10 @@ body {
     }
 
     #words {
-        width: 90%;
-        top: 150px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 20px;
-        padding: 10px;
+        top: 195px; /* 保持原来的位置 */
+        left: 70px;
+        width: 500px;
+        font-size: 24px;
     }
 
     #messages {
@@ -189,17 +187,16 @@ body {
     }
 
     #loveu {
-        font-size: 18px;
-        margin-top: 15px;
-        margin-right: 60px;
+        margin-top: 80px;
+        margin-right: 120px;
+        font-size: 22px;
     }
 
     #code {
-        width: 90%;
-        float: none;
-        margin: 20px auto;
-        height: auto;
-        min-height: 300px;
+        width: 440px;
+        float: left; /* 保持浮动 */
+        margin: 27.5px 0 0 0;
+        height: 570px;
     }
     
     #content {
@@ -209,8 +206,20 @@ body {
     }
 }
 
-/* 添加更小屏幕的支持 */
 @media screen and (max-width: 480px) {
+    #mainDiv {
+        transform: scale(0.35); /* 更小的屏幕使用更大的缩放 */
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #mainDiv {
+        transform: scale(0.3); /* 最小屏幕使用最大的缩放 */
+    }
+}
+
+/* 添加更小屏幕的支持 */
+/* @media screen and (max-width: 480px) {
     #loveHeart {
         height: 350px;
     }
@@ -226,4 +235,4 @@ body {
     #code {
         font-size: 12px;
     }
-}
+} */
