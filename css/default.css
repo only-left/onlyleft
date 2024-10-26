@@ -3,27 +3,27 @@ body {
     padding: 0;
     background: #ffe;
     font-size: 12px;
-    overflow: auto;
-    min-height: 100vh;
-    overflow-y: auto; /* 允许垂直滚动 */
+    height: 100vh; /* 使用视口高度 */
+    overflow-y: hidden; /* 禁止垂直滚动 */
+    overflow-x: auto; /* 允许水平滚动 */
+    -webkit-overflow-scrolling: touch; /* iOS滚动优化 */
 }
 
 #mainDiv {
-    width: 100%;
-    min-height: 100vh;
+    width: max-content; /* 根据内容设置宽度 */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -50px; 
-    overflow-y: auto; /* 允许垂直滚动 */
+    margin-top: -50px;
+    padding: 0 20px;
 }
 
 #content {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 0 auto;
-    min-height: 100vh; /* 确保至少有一个视口高度 */
+    white-space: nowrap; /* 防止换行 */
 }
 
 #loveHeart {
