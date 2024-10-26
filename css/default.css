@@ -3,12 +3,14 @@ body {
     padding: 0;
     background: #ffe;
     font-size: 12px;
-    overflow: auto
+    overflow: hidden
 }
 
 #mainDiv {
     width: 100%;
-    height: 100%
+    height: 100%;
+    overflow: hidden;  /* 防止内部产生滚动条 */
+    position: relative;  /* 便于内部元素绝对定位 */
 }
 
 #loveHeart {
