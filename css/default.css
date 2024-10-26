@@ -138,6 +138,7 @@ body {
 }
 
 /* 添加响应式布局支持 */
+/*
 @media screen and (max-width: 768px) {
     #mainDiv {
         transform: scale(0.45);
@@ -148,17 +149,17 @@ body {
 
     #content {
         display: flex;
-        flex-direction: row; /* 改回水平排列 */
+        flex-direction: row; 
         justify-content: center;
         align-items: flex-start;
-        width: 1110px !important; /* 保持原来的宽度 */
+        width: 1110px !important; 
         margin: 0 auto !important;
     }
 
     #loveHeart {
         width: 670px;
         height: 625px;
-        float: left; /* 保持浮动 */
+        float: left;
         margin: 0;
     }
 
@@ -168,7 +169,7 @@ body {
     }
 
     #words {
-        top: 195px; /* 保持原来的位置 */
+        top: 195px;
         left: 70px;
         width: 500px;
         font-size: 24px;
@@ -194,7 +195,7 @@ body {
 
     #code {
         width: 440px;
-        float: left; /* 保持浮动 */
+        float: left; 
         margin: 27.5px 0 0 0;
         height: 570px;
     }
@@ -208,15 +209,15 @@ body {
 
 @media screen and (max-width: 480px) {
     #mainDiv {
-        transform: scale(0.35); /* 更小的屏幕使用更大的缩放 */
+        transform: scale(0.35); 
     }
 }
 
 @media screen and (max-width: 320px) {
     #mainDiv {
-        transform: scale(0.3); /* 最小屏幕使用最大的缩放 */
+        transform: scale(0.3); 
     }
-}
+}  */
 
 /* 添加更小屏幕的支持 */
 /* @media screen and (max-width: 480px) {
