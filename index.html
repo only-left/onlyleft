@@ -117,29 +117,58 @@
     
         /* 响应式设计增强 */
         @media screen and (max-width: 768px) {
-            /* 竖屏时的整体缩放 */
             #mainDiv {
-                transform: scale(0.45);  /* 竖屏时缩放程度更大 */
+                transform: scale(0.45);
                 transform-origin: top center;
                 width: 100%;
                 height: 100%;
-                overflow: hidden;  /* 防止出现滚动条 */
+                overflow: hidden;
                 position: absolute;
                 top: 0;
                 left: 0;
             }
             
-            /* 保持原有布局，仅通过缩放适应屏幕 */
             #content {
                 width: 100%;
                 position: relative;
             }
 
-            /* 音乐控制按钮位置调整 */
+            #loveHeart {
+                float: left;
+                width: 670px;
+                height: 625px;
+                position: relative; /* 添加相对定位 */
+            }
+
+            /* 重要：调整messages的位置 */
+            #words {
+                position: absolute; /* 改为绝对定位 */
+                left: 50%;        /* 水平居中 */
+                top: 50%;         /* 垂直居中 */
+                transform: translate(-50%, -50%); /* 完全居中 */
+                width: 500px;
+                font-size: 24px;
+                color: #666;
+                text-align: center; /* 文字居中 */
+                z-index: 1;      /* 确保在garden上层 */
+            }
+
+            #messages {
+                width: 100%;     /* 宽度100% */
+                text-align: center; /* 文字居中 */
+            }
+
+            #garden {
+                width: 100%;
+                height: 100%;
+                position: relative; /* 添加相对定位 */
+            }
+
             #musicControl {
-                transform: scale(2);  /* 因为整体缩小了，所以按钮要相应放大 */
+                transform: scale(2);
                 bottom: 40px;
                 right: 40px;
+                z-index: 1000; /* 确保在最上层 */
             }
         }
 
