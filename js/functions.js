@@ -40,11 +40,33 @@ $(function() {
 //     adjustCodePosition();
 // }
 
+// function adjustContentPosition() {
+//     $("#content").css({
+//         "margin-top": Math.max(($window.height() - $("#content").height()) / 2, 10)
+//     });
+// }
+
 function adjustContentPosition() {
-    $("#content").css({
-        "margin-top": Math.max(($window.height() - $("#content").height()) / 2, 10)
+    // 使用 requestAnimationFrame 确保在下一帧渲染前执行
+    requestAnimationFrame(function() {
+        $("#content").css({
+            "margin-top": Math.max(($window.height() - $("#content").height()) / 2, 10)
+        });
+        
+        // 强制重新应用 flex 布局和间距
+        $("#content").css({
+            "display": "flex",
+            "gap": "40px"
+        });
     });
 }
+
+$(document).ready(function() {
+    // 延迟一帧执行以确保所有计算都准确
+    requestAnimationFrame(function() {
+        adjustContentPosition();
+    });
+});
 
 // 窗口大小改变时的处理
 $(window).resize(function() {

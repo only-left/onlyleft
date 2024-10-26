@@ -102,6 +102,25 @@
             #musicControl:hover {
                 background: rgba(255, 255, 255, 0.9);
             }
+
+            #content {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                gap: 40px;
+                min-width: fit-content; /* 添加最小宽度 */
+            }
+
+            /* 使用CSS Grid作为备选方案 */
+            @supports not (gap: 40px) {
+                #content {
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    grid-gap: 40px;
+                }
+            }
         </style>
         <link href="css/default.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="js/jquery.js"></script>

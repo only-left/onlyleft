@@ -16,14 +16,14 @@ body {
     margin-top: -50px; 
 }
 
-#content {
+/* #content {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
     gap: 40px;
-}
+} */
 
 #loveHeart {
     width: 670px;
