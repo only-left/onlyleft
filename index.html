@@ -117,106 +117,109 @@
     
         /* 响应式设计增强 */
         @media screen and (max-width: 768px) {
-            /* 整体容器缩放 */
+            /* 移除整体缩放，改用自适应布局 */
             #mainDiv {
-                transform: scale(0.8);
-                transform-origin: top center;
                 width: 100%;
                 overflow-x: hidden;
+                padding: 10px;
+                box-sizing: border-box;
             }
             
             /* 调整主要内容区域 */
             #content {
                 width: 100%;
-                padding: 10px;
-                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
-    
+
             /* 调整代码显示区域 */
             #code {
+                float: none;
                 width: 100%;
                 max-width: 440px;
                 height: auto;
+                min-height: 200px;
                 font-size: 12px;
-                margin: 0 auto;
+                margin: 10px auto;
                 padding: 10px;
                 box-sizing: border-box;
+                overflow-y: auto;
             }
-    
+
             /* 调整爱心区域 */
             #loveHeart {
-                width: 100%;
-                max-width: 670px;
-                height: auto;
                 float: none;
-                margin: 0 auto;
+                width: 100%;
+                max-width: 500px;
+                height: auto;
+                margin: 20px auto;
             }
-    
+
             #garden {
                 width: 100%;
                 height: auto;
+                margin: 0 auto;
             }
-    
+
             /* 文字区域调整 */
             #words {
                 width: 100%;
                 max-width: 500px;
                 font-size: 18px;
-                margin: 0 auto;
+                margin: 20px auto;
+                text-align: center;
             }
-    
+
             /* 时钟调整 */
             #elapseClock {
                 font-size: 16px;
-                margin: 5px 0;
+                margin: 10px 0;
+                text-align: center;
             }
-    
+
             #elapseClock .digit {
                 font-size: 28px;
             }
-    
+
             /* 爱的宣言调整 */
             #loveu {
-                margin: 40px auto;
+                margin: 20px auto;
+                padding: 5px;
                 font-size: 18px;
                 text-align: center;
+                width: 100%;
+                max-width: 500px;
             }
         }
-    
+
         /* 更小屏幕的额外调整 */
         @media screen and (max-width: 480px) {
-            #mainDiv {
-                transform: scale(0.7);
-            }
-    
             #code {
                 font-size: 11px;
             }
-    
+
             #words {
                 font-size: 16px;
             }
-    
+
             #loveu {
                 font-size: 16px;
+                margin-right: 0;
             }
         }
-    
-        /* 横屏时的特殊处理 */
-        @media screen and (max-height: 480px) and (orientation: landscape) {
-            #mainDiv {
-                transform: scale(0.6);
-            }
-            
+
+        /* 横屏模式的调整 */
+        @media screen and (orientation: landscape) {
             #content {
-                display: flex;
+                flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: center;
             }
-    
-            #code {
-                height: 300px;
-                overflow-y: auto;
+
+            #code, #loveHeart {
+                width: 48%;
+                margin: 1%;
             }
         }
     </style>
