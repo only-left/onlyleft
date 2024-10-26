@@ -17,21 +17,71 @@ $(function() {
     gardenCtx = gardenCanvas.getContext("2d");
     gardenCtx.globalCompositeOperation = "lighter";
     garden = new Garden(gardenCtx, gardenCanvas);
-    $("#content").css("width", $loveHeart.width() + $("#code").width());
-    $("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
-    $("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2, 10));
-    $("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
+    
+    // 初始化布局
+    adjustResponsiveLayout();
+    
+    // 设置渲染间隔
     setInterval(function() {
         garden.render()
     }, Garden.options.growSpeed)
 });
 
+// 响应式布局调整函数
+function adjustResponsiveLayout() {
+    var width = $(window).width();
+    if (width <= 768) {
+        // 移动端布局
+        $("#content").css({
+            "width": "100%",
+            "margin-left": "0",
+            "display": "flex",
+            "flex-direction": "column",
+            "align-items": "center"
+        });
+        
+        $("#code").css({
+            "width": "90%",
+            "float": "none",
+            "margin": "20px auto"
+        });
+        
+        $("#loveHeart").css({
+            "width": "100%",
+            "float": "none",
+            "margin": "0 auto"
+        });
+    } else {
+        // 桌面端布局
+        $("#content").css({
+            "width": $loveHeart.width() + $("#code").width(),
+            "height": Math.max($loveHeart.height(), $("#code").height()),
+            "margin-top": Math.max(($window.height() - $("#content").height()) / 2, 10),
+            "margin-left": Math.max(($window.width() - $("#content").width()) / 2, 10),
+            "display": "block"
+        });
+        
+        $("#code").css({
+            "width": "440px",
+            "float": "left",
+            "margin": "0"
+        });
+        
+        $("#loveHeart").css({
+            "float": "left",
+            "width": "670px"
+        });
+    }
+}
+
+// 窗口大小改变时的处理
 $(window).resize(function() {
     var b = $(window).width();
     var a = $(window).height();
     if (b != clientWidth && a != clientHeight) {
         location.replace(location)
     }
+    adjustResponsiveLayout();
 });
 
 function getHeartPoint(c) {
@@ -68,7 +118,6 @@ function startHeartAnimation() {
         }
     }, c);
     
-    // 在心形动画开始的同时启动打字机效果
     $("#code").typewriter();
 }
 
@@ -90,7 +139,7 @@ function startHeartAnimation() {
                 if (b >= c.length) {
                     clearInterval(e)
                 }
-            }, 75);  // 从100改为75
+            }, 75);
         });
         return this
     }
@@ -119,16 +168,9 @@ function timeElapse(c) {
 }
 
 function showMessages() {
-    adjustWordsPosition();
     $("#messages").fadeIn(5000, function() {
         showLoveU()
     })
-}
-
-function adjustWordsPosition() {
-    $("#words").css("position", "absolute");
-    $("#words").css("top", $("#garden").position().top + 195);
-    $("#words").css("left", $("#garden").position().left + 70)
 }
 
 function adjustCodePosition() {
