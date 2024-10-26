@@ -20,16 +20,26 @@ body {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: 0 auto;
-    gap: 60px;
+    gap: 40px;
 }
 
 #loveHeart {
-    float: left;
     width: 670px;
     height: 625px;
     position: relative;
-    margin-right: 0;
+    flex-shrink: 0; /* 防止 flex 压缩 */
+}
+
+#code {
+    width: 440px;
+    height: 570px;
+    color: #333;
+    font-family: "Roboto", "Lato", "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
+    font-size: 13px;
+    line-height: 1.5;
+    flex-shrink: 0; /* 防止 flex 压缩 */
 }
 
 #garden {
@@ -87,17 +97,6 @@ body {
 
 #clickSound {
     display: none;
-}
-
-#code {
-    width: 440px;
-    height: 570px;
-    color: #333;
-    font-family: "Roboto", "Lato", "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
-    font-size: 13px;
-    line-height: 1.5;
-    margin-top: 27.5px;
-    margin-left: 0;
 }
 
 #code .string {
