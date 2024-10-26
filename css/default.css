@@ -3,27 +3,28 @@ body {
     padding: 0;
     background: #ffe;
     font-size: 12px;
-    height: 100vh; /* 使用视口高度 */
-    overflow-y: hidden; /* 禁止垂直滚动 */
-    overflow-x: auto; /* 允许水平滚动 */
-    -webkit-overflow-scrolling: touch; /* iOS滚动优化 */
+    min-height: 100vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 #mainDiv {
-    width: max-content; /* 根据内容设置宽度 */
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -50px;
-    padding: 0 20px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 #content {
-    position: relative;
     display: flex;
-    align-items: center;
-    white-space: nowrap; /* 防止换行 */
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
 }
 
 #loveHeart {
@@ -149,43 +150,23 @@ body {
     }
 }
 
-/* @media screen and (max-width: 768px) {
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
     #mainDiv {
-        margin-top: 0;
-        min-height: auto;
-        display: block;
+        padding: 10px;
+        height: auto;
     }
 
     #content {
-        display: flex;
         flex-direction: column;
         width: 100%;
-        min-height: 100vh; 
-        margin: 0;
-        padding: 20px;
-        box-sizing: border-box;
     }
 
     #loveHeart {
-        width: 100vw; 
-        height: 100vw; 
-        max-width: 500px;
-        max-height: 500px;
-        margin: 0 auto;
-        position: relative;
-        transform-origin: center top;
-        transform: scale(0.8); 
-    }
-
-    #code {
-        float: none;
-        width: 90%;
-        max-width: 500px;
+        width: 100%;
         height: auto;
-        margin: 30px auto;
-        padding: 15px;
-        box-sizing: border-box;
-        font-size: 14px;
+        max-width: 400px;
+        margin: 0 auto;
     }
 
     #garden {
@@ -193,43 +174,79 @@ body {
         height: 100%;
     }
 
+    #code {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 20px auto;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
     #words {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        font-size: 18px;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
         text-align: center;
     }
 
     #messages {
+        width: 100%;
         text-align: center;
-        padding: 10px;
-    }
-
-    #elapseClock {
-        font-size: 16px;
     }
 
     #loveu {
+        margin-right: 0;
         text-align: center;
-        margin: 15px auto;
-        font-size: 18px;
-        margin-right: 0;  
+        width: 100%;
+    }
+
+    #elapseClock {
+        text-align: center;
     }
 }
 
+/* 小屏幕手机适配 */
 @media screen and (max-width: 480px) {
-    #loveHeart {
-        transform: scale(0.7);
-    }
-
-    #words {
-        font-size: 16px;
+    body {
+        font-size: 14px;
     }
 
     #code {
-        font-size: 13px;
+        font-size: 12px;
+        line-height: 1.4;
     }
-} */
+
+    #words {
+        font-size: 18px;
+    }
+
+    #elapseClock .digit {
+        font-size: 24px;
+    }
+
+    #loveu {
+        font-size: 18px;
+    }
+}
+
+/* 横屏适配 */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    #content {
+        flex-direction: row;
+    }
+
+    #loveHeart {
+        width: 50%;
+    }
+
+    #code {
+        width: 50%;
+    }
+}
