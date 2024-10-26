@@ -95,10 +95,10 @@
             font-size: 15px;
         }
     
-        /* 音乐控制按钮样式调整 */
+        /* 调整音乐控制按钮位置 */
         #musicControl {
             position: fixed;
-            bottom: 5%;  /* 改用百分比，确保不会超出视口 */
+            bottom: 10px;  /* 减小底部距离 */
             right: 20px;
             z-index: 999;
             background: rgba(255, 255, 255, 0.6);
@@ -110,7 +110,7 @@
             transition: all 0.3s;
             display: none;
         }
-    
+
         #musicControl:hover {
             background: rgba(255, 255, 255, 0.9);
         }
@@ -137,8 +137,8 @@
 
             /* 音乐控制按钮位置调整 */
             #musicControl {
-                transform: scale(2);
-                bottom: 10%;  /* 在移动端稍微提高位置 */
+                transform: scale(2);  /* 因为整体缩小了，所以按钮要相应放大 */
+                bottom: 40px;
                 right: 40px;
             }
         }
@@ -152,7 +152,7 @@
 
             #musicControl {
                 transform: scale(1.5);
-                bottom: 15%;  /* 横屏时的位置调整 */
+                bottom: 20px;
                 right: 20px;
             }
         }
