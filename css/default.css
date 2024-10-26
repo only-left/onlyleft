@@ -138,10 +138,10 @@ body {
 }
 
 /* 添加响应式布局支持 */
-/*
+
 @media screen and (max-width: 768px) {
     #mainDiv {
-        transform: scale(0.45);
+        transform: scale(calc(100vw / 1110)); /* 根据视窗宽度动态计算缩放比例 */
         transform-origin: top center;
         height: auto;
         margin-top: 0;
@@ -149,18 +149,16 @@ body {
 
     #content {
         display: flex;
-        flex-direction: row; 
+        flex-direction: row;
         justify-content: center;
         align-items: flex-start;
-        width: 1110px !important; 
+        /* 移除固定宽度限制 */
         margin: 0 auto !important;
     }
 
     #loveHeart {
         width: 670px;
         height: 625px;
-        float: left;
-        margin: 0;
     }
 
     #garden {
@@ -195,7 +193,6 @@ body {
 
     #code {
         width: 440px;
-        float: left; 
         margin: 27.5px 0 0 0;
         height: 570px;
     }
@@ -204,6 +201,12 @@ body {
         width: 100% !important;
         height: auto !important;
         margin: 0 !important;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 480px) {
+    #mainDiv {
+        transform: scale(calc(100vh / 625)); /* 根据视窗高度动态计算缩放 */
     }
 }
 
@@ -217,7 +220,7 @@ body {
     #mainDiv {
         transform: scale(0.3); 
     }
-}  */
+}  
 
 /* 添加更小屏幕的支持 */
 /* @media screen and (max-width: 480px) {
