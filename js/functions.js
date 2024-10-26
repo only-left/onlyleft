@@ -18,8 +18,8 @@ $(function() {
     gardenCtx.globalCompositeOperation = "lighter";
     garden = new Garden(gardenCtx, gardenCanvas);
     
-    // 初始化布局
-    adjustResponsiveLayout();
+    // 调整布局
+    adjustContentPosition();
     
     // 设置渲染间隔
     setInterval(function() {
@@ -27,51 +27,17 @@ $(function() {
     }, Garden.options.growSpeed)
 });
 
-// 响应式布局调整函数
-function adjustResponsiveLayout() {
-    var width = $(window).width();
-    if (width <= 768) {
-        // 移动端布局
-        $("#content").css({
-            "width": "100%",
-            "margin-left": "0",
-            "display": "flex",
-            "flex-direction": "column",
-            "align-items": "center"
-        });
-        
-        $("#code").css({
-            "width": "90%",
-            "float": "none",
-            "margin": "20px auto"
-        });
-        
-        $("#loveHeart").css({
-            "width": "100%",
-            "float": "none",
-            "margin": "0 auto"
-        });
-    } else {
-        // 桌面端布局
-        $("#content").css({
-            "width": $loveHeart.width() + $("#code").width(),
-            "height": Math.max($loveHeart.height(), $("#code").height()),
-            "margin-top": Math.max(($window.height() - $("#content").height()) / 2, 10),
-            "margin-left": Math.max(($window.width() - $("#content").width()) / 2, 10),
-            "display": "block"
-        });
-        
-        $("#code").css({
-            "width": "440px",
-            "float": "left",
-            "margin": "0"
-        });
-        
-        $("#loveHeart").css({
-            "float": "left",
-            "width": "670px"
-        });
-    }
+// 简化后的布局调整函数
+function adjustContentPosition() {
+    $("#content").css({
+        "width": $loveHeart.width() + $("#code").width(),
+        "height": Math.max($loveHeart.height(), $("#code").height()),
+        "margin-top": Math.max(($window.height() - $("#content").height()) / 2, 10),
+        "margin-left": Math.max(($window.width() - $("#content").width()) / 2, 10)
+    });
+    
+    // 调整代码位置
+    adjustCodePosition();
 }
 
 // 窗口大小改变时的处理
@@ -81,9 +47,10 @@ $(window).resize(function() {
     if (b != clientWidth && a != clientHeight) {
         location.replace(location)
     }
-    adjustResponsiveLayout();
+    adjustContentPosition();
 });
 
+// 其他函数保持不变
 function getHeartPoint(c) {
     var b = c / Math.PI;
     var a = 19.5 * (16 * Math.pow(Math.sin(b), 3));
@@ -121,30 +88,6 @@ function startHeartAnimation() {
     $("#code").typewriter();
 }
 
-(function(a) {
-    a.fn.typewriter = function() {
-        this.each(function() {
-            var d = a(this),
-                c = d.html(),
-                b = 0;
-            d.html("").show();
-            var e = setInterval(function() {
-                var f = c.substr(b, 1);
-                if (f == "<") {
-                    b = c.indexOf(">", b) + 1
-                } else {
-                    b++
-                }
-                d.html(c.substring(0, b) + (b & 1 ? "_" : ""));
-                if (b >= c.length) {
-                    clearInterval(e)
-                }
-            }, 75);
-        });
-        return this
-    }
-})(jQuery);
-
 function timeElapse(c) {
     var e = Date();
     var f = (Date.parse(e) - Date.parse(c)) / 1000;
@@ -180,3 +123,27 @@ function adjustCodePosition() {
 function showLoveU() {
     $("#loveu").fadeIn(3000)
 }
+
+(function(a) {
+    a.fn.typewriter = function() {
+        this.each(function() {
+            var d = a(this),
+                c = d.html(),
+                b = 0;
+            d.html("").show();
+            var e = setInterval(function() {
+                var f = c.substr(b, 1);
+                if (f == "<") {
+                    b = c.indexOf(">", b) + 1
+                } else {
+                    b++
+                }
+                d.html(c.substring(0, b) + (b & 1 ? "_" : ""));
+                if (b >= c.length) {
+                    clearInterval(e)
+                }
+            }, 75);
+        });
+        return this
+    }
+})(jQuery);
