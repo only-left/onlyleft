@@ -141,24 +141,33 @@ body {
 @media screen and (max-width: 768px) {
     #mainDiv {
         margin-top: 0;
-        min-height: auto;
         padding: 20px 0;
+        min-height: auto;
     }
 
     #content {
         flex-direction: column;
-        align-items: center;
-        margin: 0 auto;
         width: 100% !important;
     }
 
     #loveHeart {
         float: none;
+        order: -1; /* 确保在最上方 */
         width: 100%;
-        max-width: 500px; /* 限制最大宽度 */
+        max-width: 500px;
         height: auto;
-        aspect-ratio: 1/1; /* 保持正方形比例 */
-        margin: 0 auto 30px; /* 添加底部间距 */
+        aspect-ratio: 1/1;
+        margin: 0 auto 30px;
+    }
+
+    #code {
+        float: none;
+        order: 1; /* 确保在下方 */
+        width: 90%;
+        max-width: 500px;
+        height: auto;
+        margin: 30px auto 0;
+        padding: 20px;
     }
 
     #garden {
@@ -167,6 +176,7 @@ body {
     }
 
     #words {
+        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -175,7 +185,7 @@ body {
     }
 
     #messages {
-        text-align: center; /* 在手机上居中显示可能更好 */
+        text-align: center;
         padding: 10px;
     }
 
@@ -183,27 +193,10 @@ body {
         font-size: 16px;
     }
 
-    #elapseClock .digit {
-        font-size: 28px;
-    }
-
     #loveu {
         text-align: center;
-        margin: 15px 0 0 0; /* 移除右边距，改用上下边距 */
+        margin: 15px 0 0 0;
         font-size: 18px;
-    }
-
-    #code {
-        float: none;
-        width: 90%;
-        max-width: 500px;
-        height: auto;
-        margin: 0 auto;
-        padding: 20px;
-        font-size: 14px;
-        line-height: 1.6;
-        background: rgba(255, 255, 255, 0.1); /* 可选：添加轻微背景突出文字 */
-        border-radius: 10px; /* 可选：添加圆角 */
     }
 }
 
@@ -215,10 +208,6 @@ body {
 
     #words {
         font-size: 16px;
-    }
-
-    #elapseClock .digit {
-        font-size: 24px;
     }
 
     #code {
