@@ -1,0 +1,122 @@
+/* body{margin:0;padding:0;background:#ffe;font-size:14px;font-family:'微软雅黑','宋体',sans-serif;color:#231F20;overflow:auto}
+a {color:#000;font-size:14px;}
+#main{width:100%;}
+#wrap{position:relative;margin:0 auto;width:1100px;height:680px;margin-top:10px;}
+#text{width:400px;height:425px;left:60px;top:80px;position:absolute;}
+#code{display:none;font-size:16px;}
+#clock-box {position:absolute;left:60px;top:550px;font-size:28px;display:none;}
+#clock-box a {font-size:28px;text-decoration:none;}
+#clock{margin-left:48px;}
+#clock .digit {font-size:64px;}
+#canvas{margin:0 auto;width:1100px;height:680px;}
+#error{margin:0 auto;text-align:center;margin-top:60px;display:none;}
+.hand{cursor:pointer;}
+.say{margin-left:5px;}
+.space{margin-right:150px;} */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffe;
+    font-size: 14px;
+    font-family: '微软雅黑', '宋体', sans-serif;
+    color: #231F20;
+    overflow: auto;
+}
+
+a {
+    color: #000;
+    font-size: 14px;
+}
+
+#main {
+    width: 100%;
+}
+
+#wrap {
+    position: relative;
+    margin: 0 auto;
+    width: 1200px; /* 增加到1200px以腾出更多空间 */
+    height: 680px;
+    margin-top: 10px;
+}
+
+#text {
+    width: 500px; /* 增大文本框的宽度以减少水平滚动 */
+    height: 425px;
+    left: 80px; /* 增加左侧间距 */
+    top: 80px;
+    position: absolute;
+}
+
+#code {
+    display: none;
+    font-size: 16px;
+    max-height: 450px;
+    width: 100%;
+    overflow-y: auto;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #FFFFEF;
+    line-height: 1.5;
+}
+
+#code::-webkit-scrollbar {
+    width: 8px;
+}
+
+#code::-webkit-scrollbar-thumb {
+    background-color: #FFFFEF;
+    border-radius: 4px;
+}
+
+#code::-webkit-scrollbar-track {
+    background-color: #FFFFEF;
+}
+
+#clock-box {
+    position: absolute;
+    left: 80px; /* 增加左侧间距，保持与 #text 对齐 */
+    top: 550px;
+    font-size: 28px;
+    display: none;
+}
+
+#clock-box a {
+    font-size: 28px;
+    text-decoration: none;
+}
+
+#clock {
+    margin-left: 48px;
+}
+
+#clock .digit {
+    font-size: 64px;
+}
+
+#canvas {
+    margin: 0 auto;
+    width: 1100px;
+    height: 680px;
+}
+
+#error {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 60px;
+    display: none;
+}
+
+.hand {
+    cursor: pointer;
+}
+
+.say {
+    margin-left: 5px;
+}
+
+.space {
+    margin-right: 150px;
+}
