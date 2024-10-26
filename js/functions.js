@@ -28,16 +28,22 @@ $(function() {
 });
 
 // 简化后的布局调整函数
+// function adjustContentPosition() {
+//     $("#content").css({
+//         "width": $loveHeart.width() + $("#code").width(),
+//         "height": Math.max($loveHeart.height(), $("#code").height()),
+//         "margin-top": Math.max(($window.height() - $("#content").height()) / 2, 10),
+//         "margin-left": Math.max(($window.width() - $("#content").width()) / 2, 10)
+//     });
+    
+//     // 调整代码位置
+//     adjustCodePosition();
+// }
+
 function adjustContentPosition() {
     $("#content").css({
-        "width": $loveHeart.width() + $("#code").width(),
-        "height": Math.max($loveHeart.height(), $("#code").height()),
-        "margin-top": Math.max(($window.height() - $("#content").height()) / 2, 10),
-        "margin-left": Math.max(($window.width() - $("#content").width()) / 2, 10)
+        "margin-top": Math.max(($window.height() - $("#content").height()) / 2, 10)
     });
-    
-    // 调整代码位置
-    adjustCodePosition();
 }
 
 // 窗口大小改变时的处理
@@ -116,9 +122,9 @@ function showMessages() {
     })
 }
 
-function adjustCodePosition() {
-    $("#code").css("margin-top", ($("#garden").height() - $("#code").height()) / 2)
-}
+// function adjustCodePosition() {
+//     $("#code").css("margin-top", ($("#garden").height() - $("#code").height()) / 2)
+// }
 
 function showLoveU() {
     $("#loveu").fadeIn(3000)
