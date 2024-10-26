@@ -139,35 +139,69 @@ body {
 
 /* 添加响应式布局支持 */
 @media screen and (max-width: 768px) {
+    /* 重置基础布局 */
+    body {
+        min-height: 100vh;
+        padding: 20px 0;
+    }
+
     #mainDiv {
         margin-top: 0;
-        padding: 20px 0;
         min-height: auto;
+        display: block; /* 改为块级布局 */
     }
 
     #content {
-        flex-direction: column;
+        display: block; /* 改为块级布局 */
         width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        position: static;
     }
 
+    /* 先隐藏两个主要区块，准备重新布局 */
+    #loveHeart,
+    #code {
+        display: none;
+    }
+
+    /* 创建新的移动端布局容器 */
+    #content::before {
+        content: '';
+        display: block;
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 1/1;
+        margin: 0 auto 30px;
+        background: #ffe; /* 与body背景色相同 */
+        position: relative;
+    }
+
+    /* 重新布局爱心区域 */
     #loveHeart {
+        display: block;
         float: none;
-        order: -1; /* 确保在最上方 */
         width: 100%;
         max-width: 500px;
         height: auto;
         aspect-ratio: 1/1;
         margin: 0 auto 30px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
+    /* 重新布局文字区域 */
     #code {
+        display: block;
         float: none;
-        order: 1; /* 确保在下方 */
         width: 90%;
         max-width: 500px;
         height: auto;
         margin: 30px auto 0;
         padding: 20px;
+        position: relative;
     }
 
     #garden {
@@ -182,6 +216,7 @@ body {
         transform: translate(-50%, -50%);
         width: 80%;
         font-size: 18px;
+        text-align: center;
     }
 
     #messages {
@@ -202,6 +237,7 @@ body {
 
 /* 更小屏幕的微调 */
 @media screen and (max-width: 480px) {
+    #content::before,
     #loveHeart {
         max-width: 350px;
     }
