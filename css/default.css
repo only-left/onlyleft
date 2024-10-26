@@ -15,7 +15,7 @@ body {
     float: left;
     width: 670px;
     height: 625px;
-    position: relative; /* 添加相对定位 */
+    position: relative;
 }
 
 #garden {
@@ -28,7 +28,7 @@ body {
     text-align: right;
     font-size: 18px;
     margin-top: 10px;
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
 #words {
@@ -36,7 +36,6 @@ body {
     width: 500px;
     font-size: 24px;
     color: #666;
-    position: relative; /* 添加相对定位 */
 }
 
 /* #messages {
@@ -44,7 +43,7 @@ body {
 } */
 
 #messages {
-    text-align: center; /* 默认居中 */
+    display: none;
 }
 
 #elapseClock .digit {
@@ -58,7 +57,7 @@ body {
     margin-top: 80px;
     margin-right: 120px;
     text-align: right;
-    display: none
+    display: none;
 }
 
 #loveu .signature {

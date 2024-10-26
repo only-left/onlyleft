@@ -134,49 +134,75 @@
             }
 
             #loveHeart {
+                position: relative;
                 float: left;
                 width: 670px;
                 height: 625px;
-                position: relative; /* 添加相对定位 */
             }
 
-            /* 重要：调整messages的位置 */
+            /* 重要：调整words容器的位置 */
             #words {
-                position: absolute; /* 改为绝对定位 */
-                left: 50%;        /* 水平居中 */
-                top: 50%;         /* 垂直居中 */
-                transform: translate(-50%, -50%); /* 完全居中 */
-                width: 500px;
-                font-size: 24px;
-                color: #666;
-                text-align: center; /* 文字居中 */
-                z-index: 1;      /* 确保在garden上层 */
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 670px; /* 与loveHeart同宽 */
+                height: 625px; /* 与loveHeart同高 */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none; /* 允许点击穿透到garden */
             }
 
+            /* messages的样式 */
             #messages {
-                width: 100%;     /* 宽度100% */
-                text-align: center; /* 文字居中 */
+                display: block;
+                width: 500px;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.8); /* 可选：添加半透明背景 */
+                padding: 10px;
+                pointer-events: auto; /* 恢复点击事件 */
             }
 
-            #garden {
-                width: 100%;
-                height: 100%;
-                position: relative; /* 添加相对定位 */
+            /* 时钟样式 */
+            #elapseClock {
+                margin: 10px auto;
+                text-align: center;
             }
 
+            /* loveu样式 */
+            #loveu {
+                margin: 20px auto 0;
+                text-align: center;
+                pointer-events: auto; /* 恢复点击事件 */
+            }
+
+            /* 音乐控制按钮位置调整 */
             #musicControl {
                 transform: scale(2);
                 bottom: 40px;
                 right: 40px;
-                z-index: 1000; /* 确保在最上层 */
+                z-index: 999;
             }
         }
 
         /* 横屏时的调整 */
         @media screen and (orientation: landscape) and (max-height: 480px) {
             #mainDiv {
-                transform: scale(0.6);  /* 横屏时可以稍大一些 */
+                transform: scale(0.6);
                 transform-origin: top center;
+            }
+
+            #words {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 670px;
+                height: 625px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
 
             #musicControl {
@@ -189,7 +215,19 @@
         /* 特小屏幕的额外调整 */
         @media screen and (max-width: 360px) {
             #mainDiv {
-                transform: scale(0.4);  /* 更小的屏幕更大的缩放 */
+                transform: scale(0.4);
+            }
+
+            #words {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 670px;
+                height: 625px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
         }
 
@@ -198,6 +236,18 @@
             #mainDiv {
                 transform: scale(0.35);
             }
+
+            #words {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 670px;
+                height: 625px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
         }
 
         /* 确保iPad等中等尺寸设备的显示 */
@@ -205,6 +255,18 @@
             #mainDiv {
                 transform: scale(0.8);
                 transform-origin: top center;
+            }
+
+            #words {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 670px;
+                height: 625px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
         }
     </style>
