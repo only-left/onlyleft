@@ -21,6 +21,7 @@ body {
     display: flex;
     align-items: center;
     margin: 0 auto;
+    gap: 40px;
 }
 
 #loveHeart {
@@ -28,6 +29,7 @@ body {
     width: 670px;
     height: 625px;
     position: relative;
+    margin-right: 20px;
 }
 
 #garden {
@@ -53,6 +55,7 @@ body {
     text-align: left;
     padding: 20px;
     background-color: transparent;
+    margin-right: 40px;
 }
 
 #elapseClock {
@@ -94,6 +97,7 @@ body {
     font-size: 13px;
     line-height: 1.5;
     margin-top: 27.5px;
+    margin-left: 20px;
 }
 
 #code .string {
