@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>葱妹和蒜姐</title>
+    
+    <!-- Stylesheets -->
+    <link type="text/css" rel="stylesheet" href="./index_files/default.css">
+    <style type="text/css">
+        #musicControl {
+            position: fixed;
+            right: 20px;  
+            top: 50px;   
+            transform: translate(-50%, -50%);
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid #ddd;
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: none;
+        }
+        #musicControl:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        #login-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FFFFEF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .login-container {
+            background: #ffffff;
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 300px;
+            width: 90%;
+        }
+        
+        .login-container h2 {
+            margin: 0 0 25px;
+            color: #d46abf;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #f2a8d4;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .login-container input:focus {
+            border-color: #f7c4e9;
+            box-shadow: 0 0 8px rgba(247, 196, 233, 0.5);
+        }
+        
+        .login-container button {
+            background: #f78fb3;
+            color: #ffffff;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            margin-top: 15px;
+        }
+        
+        .login-container button:hover {
+            background: #f06292;
+            transform: translateY(-3px);
+        }
+        
+        .error-msg {
+            color: #ff6b6b;
+            margin: 10px 0 0;
+            display: none;
+            font-size: 15px;
+        }
+    </style>
+
+    <!-- External Scripts -->
+    <script type="text/javascript" src="./index_files/jquery.min.js"></script>
+    <script type="text/javascript" src="./index_files/jscex.min.js"></script>
+    <script type="text/javascript" src="./index_files/jscex-parser.js"></script>
+    <script type="text/javascript" src="./index_files/jscex-jit.js"></script>
+    <script type="text/javascript" src="./index_files/jscex-builderbase.min.js"></script>
+    <script type="text/javascript" src="./index_files/jscex-async.min.js"></script>
+    <script type="text/javascript" src="./index_files/jscex-async-powerpack.min.js"></script>
+    <script type="text/javascript" src="./index_files/functions.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./index_files/love.js" charset="utf-8"></script>
+</head>
+
+<body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
+
+    <div id="login-box">
+        <div class="login-container">
+            <h2>请输入密码</h2>
+            <input type="password" id="password" placeholder="输入密码...">
+            <button onclick="checkPassword()">进入</button>
+            <p class="error-msg" id="error-msg">密码错误，请重试</p>
+        </div>
+    </div>
+
+    <div id="musicControl">暂停音乐</div>
+    
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop>
+        <source src="./music/background.mp3" type="audio/mp3">
+    </audio>
+
+    <div id="main">
+        <div id="wrap">
+            <!-- Love Message Text -->
+            <div id="text">
+                <div id="code">
+                    <font color="#000000">
+                        <span class="say">傻瓜。</span><br>
+                        <span class="say">我爱你，我知道你肯定会很无奈的说我知道你爱我呢。</span><br>
+                        <span class="say">我想你，就像坐华师地铁线时总想遇见那个你相像的女孩。</span><br>
+                        <span class="say">想你的时候，就会特别嫉妒汉子。</span><br>
+                        <span class="say">嫉妒她和你一起上课吃饭逛街，我总是极度抱怨的说为什么不是我。</span><br>
+                        <span class="say">陪你跑步，陪你自习，和你睡上下铺的人为什么不是我呢。</span><br>
+                        <span class="say">也就这时候我才发现我是有多小心眼。</span><br>
+                        <span class="say">还记得我们说好的两居室吗。</span><br>
+                        <span class="say">一卧室一书房，我们可以在客厅跳舞弹琴。</span><br>
+                        <span class="say">房子不要很大，只要里面有我和你。</span><br>
+                        <span class="say">对了，你还说要放加湿器，你怕我流鼻血。</span><br>
+                        <span class="say">还记得有一天我对你说了很多遍想你吗。想你，只剩下这句话的时候。</span><br>
+                        <span class="say">你不知道我的生活会有多空虚，</span><br>
+                        <span class="say">只因其他填充不了它的空缺。</span><br>
+                        <span class="say">还记得我说过不要和五六个人做的伴娘吗。</span><br>
+                        <span class="say">因为我不是唯一的伴娘，我会生气的。</span><br>
+                        <span class="say">还有，我怕我舍不得你出嫁，抢婚了怎么办。</span><br>
+                        <span class="say">嘿嘿，有木有好傻。但我就是这么想的。</span><br>
+                        <span class="say">我想看到你幸福，但我不想看着你跟别人走。</span><br>
+                        <span class="say">小傻瓜，我想你。</span><br>
+                        <span class="say">累了，难过了不许哭鼻子。</span><br>
+                        <span class="say">你想去月球想去火星我都会陪着你。</span><br>
+                        <span class="say">只要你快乐。</span><br>
+                        <span class="say">小傻瓜，我爱你。</span><br>
+                        <span class="say">我总会习惯逛商场就会想要给你买衣服买巧克力买很多你爱吃的零食。</span><br>
+                        <span class="say">一盒巧克力你却能吃上一个学期。</span><br>
+                        <span class="say">可听到你说因减肥不吃晚饭的时候你不知道我有多担心你。</span><br>
+                        <span class="say">傻瓜，你多肥多"丑"我都会爱你。</span><br>
+                        <span class="say">只要你健康。</span><br>
+                        <span class="say">争吵也好，离别也好，我都爱你。</span><br>
+                        <span class="say"><span class="space"></span></span>
+                    </font>
+                </div>
+            </div>
+
+            <!-- Timer Display -->
+            <div id="clock-box">
+                <font color="#66B032">葱妹</font>和<font color="#D8BFD8">蒜姐</font>在一起
+                <font color="#666666">已经....</font>
+                <div id="clock"></div>
+            </div>
+
+            <!-- Canvas for Animation -->
+            <canvas id="canvas" width="1100" height="780"></canvas>
+
+            <div id="message-board">
+                <div class="message-header">留言板</div>
+                <div class="message-content">
+                    <div id="current-message">暂无留言</div>
+                    <div class="message-info">
+                        <span id="message-author"></span>
+                        <span id="message-date"></span>
+                    </div>
+                </div>
+                <div class="message-navigation">
+                    <button class="nav-button" id="prev-message" disabled>上一条</button>
+                    <button class="nav-button" id="next-message" disabled>下一条</button>
+                </div>
+                <div class="add-message">
+                    <input type="text" id="author-name" class="message-input" placeholder="你的名字...">
+                    <textarea id="message-text" class="message-input" placeholder="写下你的留言..."></textarea>
+                    <button class="submit-button" onclick="submitMessage()">发送留言</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation Script -->
+    <script>
+        // 全局变量定义
+        var audio = document.getElementById('bgMusic');
+        var musicControl = document.getElementById('musicControl');
+        var isPlaying = false;
+
+        function checkPassword() {
+            var password = document.getElementById('password').value;
+            if (password === "") {
+                // 隐藏登录框
+                document.getElementById('login-box').style.display = 'none';
+                // 显示主内容
+                document.getElementById('main').style.display = 'block';
+                // 显示音乐控制
+                document.getElementById('musicControl').style.display = 'block';
+                // 初始化内容
+                initializeContent();
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        // 回车键支持
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // 初始化内容函数
+        function initializeContent() {
+            startMusic();
+            initializeAnimation();
+        }
+
+        // 音乐控制函数
+        function startMusic() {
+            audio.play().then(function() {
+                isPlaying = true;
+                updateButtonText();
+            }).catch(function(error) {
+                console.log("播放失败:", error);
+                document.addEventListener('click', function firstClick() {
+                    startMusic();
+                    document.removeEventListener('click', firstClick);
+                });
+            });
+        }
+
+        function updateButtonText() {
+            musicControl.textContent = isPlaying ? '暂停音乐' : '播放音乐';
+        }
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+            isPlaying = !isPlaying;
+            updateButtonText();
+        }
+
+        musicControl.addEventListener('click', togglePlay);
+
+        // 动画初始化函数
+        function initializeAnimation() {
+            var canvas = $('#canvas');
+            
+            // 检查canvas支持
+            if (!canvas[0].getContext) {
+                $("#error").show();
+                return false;
+            }
+
+            var width = canvas.width();
+            var height = canvas.height();
+            
+            canvas.attr("width", width);
+            canvas.attr("height", height);
+
+            // 动画配置
+            var opts = {
+                seed: {
+                    x: width / 2 - 20,
+                    color: "rgb(190, 26, 37)",
+                    scale: 2
+                },
+                branch: [
+                    [535, 780, 570, 250, 500, 200, 30, 100, [
+                        [540, 500, 455, 417, 340, 400, 13, 100, [
+                            [450, 435, 434, 430, 394, 395, 2, 40]
+                        ]],
+                        [550, 445, 600, 356, 680, 345, 12, 100, [
+                            [578, 400, 648, 409, 661, 426, 3, 80]
+                        ]],
+                        [539, 281, 537, 248, 534, 217, 3, 40],
+                        [546, 397, 413, 247, 328, 244, 9, 80, [
+                            [427, 286, 383, 253, 371, 205, 2, 40],
+                            [498, 345, 435, 315, 395, 330, 4, 60]
+                        ]],
+                        [546, 357, 608, 252, 678, 221, 6, 100, [
+                            [590, 293, 646, 277, 648, 271, 2, 80]
+                        ]]
+                    ]] 
+                ],
+                bloom: {
+                    num: 700,
+                    width: 1080,
+                    height: 650,
+                },
+                footer: {
+                    width: 1200,
+                    height: 5,
+                    speed: 10,
+                }
+            };
+
+            var tree = new Tree(canvas[0], width, height, opts);
+            var seed = tree.seed;
+            var foot = tree.footer;
+            var hold = 1;
+
+            // Canvas事件处理
+            canvas.click(function(e) {
+                var offset = canvas.offset(), x, y;
+                x = e.pageX - offset.left;
+                y = e.pageY - offset.top;
+                if (seed.hover(x, y)) {
+                    hold = 0; 
+                    canvas.unbind("click");
+                    canvas.unbind("mousemove");
+                    canvas.removeClass('hand');
+                }
+            }).mousemove(function(e){
+                var offset = canvas.offset(), x, y;
+                x = e.pageX - offset.left;
+                y = e.pageY - offset.top;
+                canvas.toggleClass('hand', seed.hover(x, y));
+            });
+
+            // 动画序列定义
+            var seedAnimate = eval(Jscex.compile("async", function () {
+                seed.draw();
+                while (hold) {
+                    $await(Jscex.Async.sleep(10));
+                }
+                while (seed.canScale()) {
+                    seed.scale(0.95);
+                    $await(Jscex.Async.sleep(10));
+                }
+                while (seed.canMove()) {
+                    seed.move(0, 2);
+                    foot.draw();
+                    $await(Jscex.Async.sleep(10));
+                }
+            }));
+
+            var growAnimate = eval(Jscex.compile("async", function () {
+                do {
+                    tree.grow();
+                    $await(Jscex.Async.sleep(10));
+                } while (tree.canGrow());
+            }));
+
+            var flowAnimate = eval(Jscex.compile("async", function () {
+                do {
+                    tree.flower(2);
+                    $await(Jscex.Async.sleep(10));
+                } while (tree.canFlower());
+            }));
+
+            var moveAnimate = eval(Jscex.compile("async", function () {
+                tree.snapshot("p1", 240, 0, 610, 780);
+                while (tree.move("p1", 500, 0)) {
+                    foot.draw();
+                    $await(Jscex.Async.sleep(10));
+                }
+                foot.draw();
+                tree.snapshot("p2", 500, 0, 610, 780);
+
+                canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
+                canvas.css("background", "#ffe");
+                $await(Jscex.Async.sleep(300));
+                canvas.css("background", "none");
+            }));
+
+            var jumpAnimate = eval(Jscex.compile("async", function () {
+                var ctx = tree.ctx;
+                while (true) {
+                    tree.ctx.clearRect(0, 0, width, height);
+                    tree.jump();
+                    foot.draw();
+                    $await(Jscex.Async.sleep(25));
+                }
+            }));
+
+            var textAnimate = eval(Jscex.compile("async", function () {
+                var strs = "2008-12-13 03:00:00";
+                var nowTime = new Date();
+                var together = new Date(strs.replace(/-/g,"/"));
+
+                $("#code").show().typewriter();
+                $("#clock-box").fadeIn(500);
+                while (true) {
+                    timeElapse(together);
+                    $await(Jscex.Async.sleep(1000));
+                }
+            }));
+
+            // 运行所有动画
+            var runAsync = eval(Jscex.compile("async", function () {
+                $await(seedAnimate());
+                $await(growAnimate());
+                $await(flowAnimate());
+                $await(moveAnimate());
+
+                textAnimate().start();
+
+                $await(jumpAnimate());
+            }));
+
+            // 开始运行动画
+            runAsync().start();
+        }
+    </script>
+</body>
+</html>
